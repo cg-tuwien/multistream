@@ -1,0 +1,15 @@
+{% set entry = session.program[status.programIndex] %}
+{% set location = entry.locationDetail %}
+{% set locationId = location|split(' ')[0] %}
+{% set end = session.start|replace({'Z': ''}) %}
+{% for entry in session.program %}
+{% set end = end|date_modify('+' ~ entry.duration ~ ' seconds') %}
+{% endfor %}
+
+<div class='continue-discussion'>
+    <div class="info">Continue the discussion in gather.town:</div>
+    <div class="location-icon"><img src="themes/{{ session.theme }}/icons/{{ locationId|lower }}.png"></div>
+    <div class='session-title'>{{location}}</div>
+    <div class='date'>at {{ end|date('G:i') }} CEST</div>
+    <div class="info">You can also keep asking questions in the Discord channel</div>
+</div>

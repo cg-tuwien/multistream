@@ -1,0 +1,13 @@
+{
+  "fast_forwardSidebarTemplate": "none",
+  "prologueBottomTemplate": "none",
+  "epilogueBottomTemplate": "epilogue_bottom",
+  "breakBottomTemplate": "break_bottom",
+  "defaultBottomTemplate": "bottom_title",
+  "defaultSidebarTemplate": "preview",
+  "defaultTitleTemplate": "session_title",
+  "templateBottomTemplate": "bottom_title",
+  "videoBottomTemplate": "video_bottom_title",
+  "liveBackgroundBottomTemplate": "video_bottom_title",
+  "continueDiscussionBottomTemplate": "video_bottom_title"
+}

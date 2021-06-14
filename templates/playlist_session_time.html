@@ -1,0 +1,11 @@
+<div class="col_title">{{ title }}</div>
+    <ul id="playlist">
+    {% for index, entry in session.program[status.programIndex].videoPlaylist %}
+      <li{{ index == status.slideIndex ? " class='highlighted'" : ""}} data-playlist-index="{{ index }}">
+        <div class='time'>{{ entry.session_short_title }}<br>{{ entry.start|date('D, G:i') }}</div>
+        <div class='title'>{{ entry.title }}</div>
+        {% include "entry_authors.html" %}
+      </li>
+    {% endfor %}
+    </ul>
+</div>

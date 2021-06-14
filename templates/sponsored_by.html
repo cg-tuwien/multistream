@@ -1,0 +1,7 @@
+<div class='sponsored_by_1'>We are thankful to ...</div>
+<div class='sponsored_by count-{{ session.sponsored_by|length }}'>
+{% for entry in session.sponsored_by %}
+<div class='sponsor'><img src='data/{{ id }}/{{ entry.logo }}'></div>
+{% endfor %}
+</div>
+<div class='sponsored_by_2'>... for sponsoring this session!</div>

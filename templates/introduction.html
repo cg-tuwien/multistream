@@ -1,0 +1,40 @@
+{% set entry = session.program[status.programIndex] %}
+<div class='introduction'>
+  <div class='talk'>
+    {% if entry.teaserImage %}
+    <img class="teaserImage" src="data/{{ id }}/{{ entry.teaserImage }}">
+    {% endif %}
+    <div class='title'>{{ entry.title }}</div>
+  </div>
+  <ul class="presenter count-{{ entry.presenter|length }}">
+  {%- for i, p in entry.presenter -%}
+  <li>
+    {% if p.image %}
+    <img class="presenterImage" src="data/{{ id }}/{{ p.image }}">
+    {% else %}
+    <div class="presenterImage"></div>
+    {% endif %}
+    <div class="presenterName">{{ p.name }}</div>
+    <div class="presenterAffiliation">{{ p.affiliation }}</div>
+  </li>
+  {%- endfor -%}
+  </ul>
+</div>
+{% if session.chair %}
+<div id="session-chair">
+    {% if session.chair|length > 1 %}
+    <div class="chairLabel">Session Chairs:</div>
+    {% else %}
+    <div class="chairLabel">Session Chair:</div>
+    {% endif %}
+    {%- for i, chair in session.chair -%}
+      <div class="chair">
+        {% if i > 0%}
+        || &nbsp;&nbsp;
+        {% endif %}
+        <div class="chairName">{{ chair.name }}</div>
+        <!--<div class="chairAffiliation">{{ chair.affiliation }}</div>-->
+      </div>
+    {%- endfor -%}
+</div>
+{% endif %}

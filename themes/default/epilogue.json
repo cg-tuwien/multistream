@@ -1,0 +1,59 @@
+{
+  "duration": "00:05:00",
+  "slides": [
+    {
+      "slide": "sponsors",
+      "title": "Sponsors",
+      "start": "00:00:00",
+      "end": "00:00:30"
+    },
+    {
+      "slide": "program",
+      "title": "Program",
+      "start": "00:00:30",
+      "end": "00:01:00"
+    },
+    {
+      "slide": "news",
+      "title": "Conference News",
+      "start": "00:01:00",
+      "end": "00:02:00"
+    },
+    {
+      "slide": "wien_werbung",
+      "title": "Wien Werbung",
+      "start": "00:02:00",
+      "end": "00:03:00"
+    },
+    {
+      "slide": "program",
+      "title": "Program",
+      "start": "00:03:00",
+      "end": "00:03:30"
+    },
+    {
+      "slide": "wien_werbung",
+      "title": "Wien Werbung",
+      "start": "00:03:30",
+      "end": "00:04:30"
+    },
+    {
+      "slide": "program",
+      "title": "Program",
+      "start": "00:04:30",
+      "end": "00:05:00"
+    }
+  ],
+  "music": {
+    "tracks": [
+      {
+        "file": "03_wiener_blut.mp3",
+        "start": "00:00:00",
+        "end": "00:05:00",
+        "in": "00:01:24",
+        "out": "00:06:10"
+      }
+    ],
+    "fadeDuration": "00:00:10"
+  }
+}

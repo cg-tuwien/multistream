@@ -1,0 +1,15 @@
+{% set start = session.start|replace({'Z': ''}) %}
+<div class="col_title">{{ title }}</div>
+    <ul id="program">
+    {% for index, entry in session.program %}
+      {% if entry.hidden != true %}
+      <li{{ index == status.slideIndex ? " class='highlighted'" : ""}} data-playlist-index="{{ index }}">
+        <div class='time'>{{ start|date('G:i') }}</div>
+        <div class='title'>{{ entry.title }}</div>
+        {% include "entry_authors.html" %}
+      </li>
+      {% endif %}
+{% set start = start|date_modify('+' ~ entry.duration ~ ' seconds') %}
+    {% endfor %}
+    </ul>
+</div>

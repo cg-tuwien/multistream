@@ -1,0 +1,6 @@
+{
+  "developmentMode": false,
+  "websocketPath": "//localhost:8080/",
+  "websocketPort": "8080",
+  "url": "http://localhost:8000/"
+}

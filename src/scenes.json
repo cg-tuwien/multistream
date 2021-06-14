@@ -1,0 +1,54 @@
+[
+  {
+    "page": "prologue.html?start=now",
+    "title": "Prologue"
+  },
+  {
+    "page": "prologue.html",
+    "title": "Prologue"
+  },
+  {
+    "page": "epilogue.html",
+    "title": "Epilogue"
+  },
+  {
+    "page": "introduction.html",
+    "title": "Introduction"
+  },
+  {
+    "page": "video.html",
+    "title": "Video"
+  },
+  {
+    "page": "fast_forward.html",
+    "title": "Fast Forwards"
+  },
+  {
+    "page": "sponsored_by.html",
+    "title": "Sponsored By"
+  },
+  {
+    "page": "break.html?start=now",
+    "title": "Coffee Break"
+  },
+  {
+    "page": "continue_discussion.html",
+    "title": "Continue Discussion"
+  },
+  {
+    "page": "template.html",
+    "title": "Template"
+  },
+  {
+    "page": "liveBackground.html",
+    "title": "Live Background"
+  },
+  {
+    "page": "zoom-monitor.html",
+    "title": "Zoom Monitor"
+  },
+  {
+    "page": "index.html",
+    "title": "Monitor"
+  }
+]

@@ -1,0 +1,25 @@
+<div id="sponsor_container">
+    <h3>We thank our sponsors:</h3>
+    <div id="sponsor_logos">
+        <div class="sponsor_row">
+            {% for sponsor in theme.sponsors.platinum %}
+            <img class="sponsor_platinum" src="sponsors/{{ sponsor.image }}" alt="{{ sponsor.name }}">
+            {% endfor %}
+        </div>
+        <div class="sponsor_row">
+            {% for sponsor in theme.sponsors.gold %}
+            <img class="sponsor_gold" src="sponsors/{{ sponsor.image }}" alt="{{ sponsor.name }}">
+            {% endfor %}
+        </div>
+        <div class="sponsor_row">
+            {% for sponsor in theme.sponsors.silver %}
+            <img class="sponsor_silver" src="sponsors/{{ sponsor.image }}" alt="{{ sponsor.name }}">
+            {% endfor %}
+        </div>
+        <div class="sponsor_row">
+            {% for sponsor in theme.sponsors.bronze %}
+            <img class="sponsor_bronze" src="sponsors/{{ sponsor.image }}" alt="{{ sponsor.name }}">
+            {% endfor %}
+        </div>
+    </div>
+</div>

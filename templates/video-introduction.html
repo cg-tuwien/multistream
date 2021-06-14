@@ -1,0 +1,12 @@
+{% set entry = session.program[status.programIndex] %}
+<div class='fast_forward video-introduction'>
+  <div class='talk'>
+    {% if entry.teaserImage %}
+    <img class="teaserImage" src="data/{{ id }}/{{ entry.teaserImage }}">
+    {% endif %}
+    <div class='title'>{{ entry.title }}</div>
+  </div>
+  {% include "entry_authors.html" %}
+  </div>
+</div>
+

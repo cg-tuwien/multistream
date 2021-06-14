@@ -1,0 +1,9 @@
+<div class='authors'>
+  {%- for i, a in entry.authors %}{{ i == 0 ? '' : ', ' }}
+    {% set is_presenter = false %}
+    {% for p in entry.presenter %}
+      {% if p.name == a.name %}{% set is_presenter = true %}{% endif %}
+    {% endfor %}
+    <span class="person {{ is_presenter ? 'is_presenter' }}">{{ a.name }}</span>
+  {%- endfor %}
+</div>

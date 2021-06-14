@@ -1,0 +1,237 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<doctype html="">
+
+
+    <meta charset="UTF-8">
+    <script>window.currentScene = 'ZoomMonitor'</script>
+    <script src='dist/app.js'></script>
+    <style>
+        body, th, td {
+            font-family: Arial;
+            font-size: 40pt;
+            background: #1f1f1f;
+            color: #ffffff;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            text-align: center;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            width: 100%;
+            border-top: 1px dashed #4c4c4c;
+            border-bottom: 1px dashed #4c4c4c;
+            padding: 0.25em;
+        }
+
+        td {
+            border-top: 1px dashed #4c4c4c;
+            border-bottom: 1px dashed #4c4c4c;
+            padding: 0.25em;
+        }
+
+        input, select {
+            width: 100%;
+            background: black;
+            color: white;
+            border: 1px solid #4c4c4c;
+        }
+
+        .button {
+            width: 100%;
+            background-color: #4c4c4c;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            text-align: center;
+            padding: 0.2em;
+            margin-top: 2px;
+        }
+
+        .button:hover {
+            background-color: #7a7a7a;
+        }
+
+        .entry {
+            margin-bottom: 0.5em;
+        }
+
+        #streams {
+            color: white;
+            background-color: #4a4a4a;
+            border: none;
+            padding: 3px;
+        }
+
+        #error.hasError {
+            text-align: center;
+            color: black;
+            background: red;
+            padding: 0.25em;
+            border-radius: 3px;
+        }
+
+        #video_container {
+            width: 100%;
+            height: 100%;
+        }
+
+        #video_container > video {
+            width: 100%;
+            height: 100%;
+        }
+
+        #logo {
+            position: fixed;
+            width: 600px;
+            top: 0;
+            left: 0;
+        }
+
+        #logo > img {
+            width: 600px;
+            height: auto;
+        }
+
+        #time {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 0.2em;
+        }
+
+        #title {
+            position: fixed;
+            top: 100px;
+            left: 0;
+            height: 100px;
+            width: 100%;
+            border-top: 1px dashed #4c4c4c;
+            border-bottom: 1px dashed #4c4c4c;
+            padding: 0.3em;
+        }
+
+        #content {
+            position: fixed;
+            top: 200px;
+            left: 0;
+            width: 70vw;
+            height: 70vh;
+            background-color: #111111;
+            text-align: center;
+            font-size: 1.5em;
+            box-sizing: border-box;
+            color: #444444;
+        }
+
+        .telePrompt {
+            box-sizing: border-box;
+            padding: 0 1em;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 200px;
+            right: 0;
+            width: 30vw;
+            height: 70vh;
+            border-top: 1px dashed #4c4c4c;
+            border-bottom: 1px dashed #4c4c4c;
+            background-color: #1f1f1f;
+        }
+
+        #sidebar > div {
+            margin: 0.3em;
+        }
+
+        #next {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 70px;
+            width: 100%;
+            padding: 0.3em;
+        }
+
+        .label {
+            margin: 0.3em;
+            font-weight: bold;
+        }
+
+        #scene {
+            padding-bottom: 0.3em;
+            border-bottom: 1px dashed #4c4c4c;
+        }
+
+        #countdownContainer {
+            float: right;
+            margin-right: 1em;
+        }
+
+        #you_are_live {
+            display: inline-flex;
+            justify-content: center;
+            flex-direction: column;
+            font-size: 3em;
+        }
+
+        #status {
+            width: 100%;
+        }
+
+        #live_container {
+            color: #d00000;
+            border: 20px solid #d00000;
+            border-radius: 15px;
+            padding: 10px;
+            font-weight: bold;
+        }
+    </style>
+
+    <div id="logo"><img src="themes/eg2021/eg2021_banner_white.png" style="width: 600px;"></div>
+    <div id="time"><strong><span id="date">9:07:53</span></strong></div>
+    <div id="title"><strong>Session: </strong><span id="session-title"></span></div>
+    <div id="content">
+        <div id='video_container'>
+
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <div class="label">Scene:</div>
+        <div id="scene"></div>
+        <div class="label">Program Point:</div>
+        <div id="programIndex"></div>
+    </div>
+    <div id="next"><strong>Next scene: </strong><span id="sceneNext"></span>
+        <div id="countdownContainer"><strong>in: </strong> <span id="countdown"></span></div>
+    </div>
+
+</doctype>
+</body>
+</html>

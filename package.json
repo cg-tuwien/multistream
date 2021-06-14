@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "async": "^3.2.0",
+    "cookie": "^0.4.1",
+    "escape-html": "^1.0.3",
+    "extsprintf": "^1.4.0",
+    "moment": "^2.29.1",
+    "twig": "^1.15.4",
+    "video-playlist": "git+https://github.com/plepe/video-playlist.git",
+    "ws": "^7.4.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "http-server": "http-server ./ -p 8000",
+    "lint": "standard --fix *.js src/*.js",
+    "build": "node create_cache_id.js && npm run build-obs-scene-collection && browserify src/index.js -o dist/app.js",
+    "build-obs-scene-collection": "node compile-obs.js",
+    "watch": "watchify -d src/index.js -o dist/app.js -v",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "http-server": "^0.12.3",
+    "standard": "^16.0.3",
+    "watchify": "^3.11.1"
+  }
+}

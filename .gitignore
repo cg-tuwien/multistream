@@ -1,0 +1,12 @@
+.idea
+node_modules
+package-lock.json
+/dist/
+/music/
+/-p/
+/conf.json
+/obs-scene-collection.json
+/data/
+cache_id.json
+/themes/eg2021
+/logs/

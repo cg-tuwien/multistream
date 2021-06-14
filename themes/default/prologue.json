@@ -1,0 +1,61 @@
+{
+  "duration": "00:05:00",
+  "layout": "full",
+  "slides": [
+    {
+      "slide": "welcome",
+      "title": "Welcome",
+      "layout": "full",
+      "start": "00:05:00",
+      "end": "00:04:30"
+    },
+    {
+      "slide": "wien_werbung",
+      "title": "Wien Werbung",
+      "start": "00:04:30",
+      "end": "00:03:30"
+    },
+    {
+      "slide": "news",
+      "title": "Conference News",
+      "start": "00:03:30",
+      "end": "00:02:30"
+    },
+    {
+      "slide": "wien_werbung",
+      "title": "Wien Werbung",
+      "start": "00:02:30",
+      "end": "00:01:30"
+    },
+    {
+      "slide": "welcome",
+      "title": "Welcome",
+      "start": "00:01:30",
+      "end": "00:01:00"
+    },
+    {
+      "slide": "sponsors",
+      "title": "Sponsors",
+      "start": "00:01:00",
+      "end": "00:00:30"
+    },
+    {
+      "slide": "sponsored_by",
+      "title": "Sponsored By",
+      "start": "00:00:30",
+      "end": "00:00:00"
+    }
+  ],
+  "music": {
+    "tracks": [
+      {
+        "file": "01_an_der_schoenen_blauen_donau.mp3",
+        "start": "00:05:00",
+        "end": "00:00:00",
+        "in": "00:01:26",
+        "out": "00:06:26"
+      }
+    ],
+    "fadeDuration": "00:00:10"
+  }
+}

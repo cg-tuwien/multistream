@@ -1,0 +1,5 @@
+{% if session.title|length < 55 %}
+    <div class="title-font-large">{{ session.title }}</div>
+{% else %}
+    <div class="title-font-small">{{ session.title }}</div>
+{% endif %}

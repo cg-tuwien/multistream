@@ -1,0 +1,13 @@
+<div class='fast_forward'>
+  <div class='pre'>
+    <div class='time'>{{ entry.session_title }}<br>{{ entry.start|date('l, G:i') }}</div>
+  </div>
+  <div class='talk'>
+    {% if entry.teaserImage %}
+    <img class="teaserImage" src="data/{{ id }}/{{ entry.teaserImage }}">
+    {% endif %}
+    <div class='title'>{{ entry.title }}</div>
+  </div>
+  {% include "entry_authors.html" %}
+</div>
+

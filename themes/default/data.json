@@ -1,0 +1,11 @@
+{
+  "logo": "logo.svg",
+  "sponsors": {
+    "bronze": [
+      {
+        "name": "LOGO",
+        "image": "../themes/default/logo.svg"
+      }
+    ]
+  }
+}
