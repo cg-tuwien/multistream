@@ -227,7 +227,7 @@ module.exports = function startMonitor (data, callback) {
 function allProgramPoints (data, index) {
   if (data.session && data.session.program && Array.isArray(data.session.program)) {
     return data.session.program
-      .map((point, i) => '<option value="' + i + '"' + (index === i ? ' selected' : '') + '>' + (point.id ? escHtml(point.id) + ': ' : '') + escHtml(point.title) + '</option>')
+      .map((point, i) => '<option value="' + i + '"' + (index == i ? ' selected' : '') + '>' + (point.id ? escHtml(point.id) + ': ' : '') + escHtml(point.title) + '</option>')
       .join('')
   }
 
