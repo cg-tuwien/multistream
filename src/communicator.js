@@ -76,7 +76,7 @@ class Communicator extends EventEmitter {
     this.cookieConnected = true
     const status = this.cookies.status ? JSON.parse(this.cookies.status) : {}
 
-    fetch('data/' + this.stream + '/data.json')
+    window.fetch('data/' + this.stream + '/data.json')
       .then(data => data.json())
       .then(json => {
         this.data = json

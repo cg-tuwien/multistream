@@ -191,7 +191,7 @@ class Test {
 
     iframe[0].src = url
 
-    history.pushState(null, '', 'test.html' + urlParam)
+    window.history.pushState(null, '', 'test.html' + urlParam)
   }
 
   getData () {

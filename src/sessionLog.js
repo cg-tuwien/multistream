@@ -49,5 +49,6 @@ module.exports = {
 
   close (id) {
     logfiles[id].close(log, () => {})
+    console.log('Close call!')
   }
 }

@@ -11,7 +11,7 @@ const playApplause = require('./playApplause')
 const conf = require('../conf.json')
 let playlist
 
-const applauseEl = new Audio()
+const applauseEl = document.createElement('audio')
 applauseEl.src = 'data/applause_talk.mp3'
 
 class Monitor {

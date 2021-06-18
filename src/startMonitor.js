@@ -82,6 +82,8 @@ class Monitor {
   }
 
   setOfflineMode () {
+    const register = document.getElementById('register')
+
     const streamSelect = register.elements.stream
     if (streamSelect.nodeName === 'SELECT') {
       const input = document.createElement('input')
@@ -98,6 +100,8 @@ class Monitor {
   }
 
   setServerMode () {
+    const register = document.getElementById('register')
+
     const streamSelect = register.elements.stream
     if (streamSelect.nodeName === 'SELECT') {
       streamSelect.onchange = () => this.monitorUpdate()
@@ -115,6 +119,7 @@ class Monitor {
 
   showRegisterButton () {
     if (global.obsstudio || conf.developmentMode) {
+      const register = document.getElementById('register')
       register.appendChild(registerButton)
     } else if (registerButton.parentNode) {
       registerButton.parentNode.removeChild(registerButton)
