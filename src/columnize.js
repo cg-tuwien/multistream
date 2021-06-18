@@ -5,16 +5,16 @@ module.exports = function (dom) {
     return
   }
 
-  let columnWidth = dom.offsetWidth
-  let columnHeight = dom.offsetHeight
+  const columnWidth = dom.offsetWidth
+  const columnHeight = dom.offsetHeight
   console.log(columnWidth, columnHeight)
 
-  let client = document.getElementById('program')
+  const client = document.getElementById('program')
   client.style.position = 'absolute'
   client.style.height = columnHeight + 'px'
   client.style.top = 0
 
-  let count = 10
+  const count = 10
   client.style.width = (columnWidth) + 'px'
   client.style.columnCount = count
   client.style.columnWidth = columnWidth + 'px'

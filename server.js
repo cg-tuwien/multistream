@@ -17,7 +17,7 @@ updateSessions(dataPath, sessions, err => {
   if (err) {
     console.error(err)
   }
-  
+
   sessionLog.update(sessions,
     () => {
       const date = currentDate()
@@ -55,7 +55,7 @@ wss.on('connection', function connection (conn, req) {
     if ('livestreamId' in message) {
       conn.livestreamId = message.livestreamId
 
-      for (let k in sessions) {
+      for (const k in sessions) {
         if (sessions[k].livestreamId === conn.livestreamId) {
           conn.stream = k
           console.log(conn.id + ': is stream host for', conn.stream)
@@ -74,7 +74,7 @@ wss.on('connection', function connection (conn, req) {
 
     if (message.host) {
       // unregister from previous stream
-      for (let k in sessions) {
+      for (const k in sessions) {
         if (sessions[k].livestreamId === conn.livestreamId) {
           sessions[k].livestreamId = null
         }
@@ -82,7 +82,7 @@ wss.on('connection', function connection (conn, req) {
 
       if (!conn.stream) {
         // assign first unclaimed stream
-        for (let k in sessions) {
+        for (const k in sessions) {
           if (!sessions[k].livestreamId) {
             conn.stream = k
             break
@@ -129,9 +129,8 @@ wss.on('connection', function connection (conn, req) {
         sessionLog.write(conn.stream, message.obsEvent)
       }
 
-      let data = clone(sessions[conn.stream])
+      const data = clone(sessions[conn.stream])
       data.date = currentDate()
-
 
       clients.forEach((conn1, i) => {
         if (conn1.stream === conn.stream && conn1.monitor) {
@@ -144,7 +143,7 @@ wss.on('connection', function connection (conn, req) {
       })
     }
 
-    let data = clone(sessions[conn.stream])
+    const data = clone(sessions[conn.stream])
     data.date = currentDate()
     data.isHost = sessions[conn.stream].livestreamId === conn.livestreamId
     conn.send(JSON.stringify(data))
@@ -153,7 +152,7 @@ wss.on('connection', function connection (conn, req) {
     }
   })
 
-  let data = {
+  const data = {
     streams: Object.keys(sessions),
     date: currentDate()
   }

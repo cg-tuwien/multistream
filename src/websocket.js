@@ -11,12 +11,12 @@ class Websocket extends EventEmitter {
     this.wsQueue = []
     this.closing = false
 
-    var loc = window.location, uri;
+    const loc = window.location; let uri
 
-    if (loc.protocol === "https:") {
-        uri = "wss:";
+    if (loc.protocol === 'https:') {
+      uri = 'wss:'
     } else {
-        uri = "ws:";
+      uri = 'ws:'
     }
 
     uri += conf.websocketPath
@@ -35,8 +35,8 @@ class Websocket extends EventEmitter {
         return
       }
 
-// TODO: remove next lines
-      let div = document.getElementById('error')
+      // TODO: remove next lines
+      const div = document.getElementById('error')
       if (div) {
         div.className = 'hasError'
         div.innerHTML = 'No connection to server - try refresh'
@@ -50,8 +50,8 @@ class Websocket extends EventEmitter {
         return
       }
 
-// TODO: remove next lines
-      let div = document.getElementById('error')
+      // TODO: remove next lines
+      const div = document.getElementById('error')
       if (div) {
         div.className = 'hasError'
         div.innerHTML = 'Connection to server lost - try refresh'

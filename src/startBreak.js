@@ -1,10 +1,9 @@
 const moment = require('moment')
 const scene = require('./scene.js')
 const updateCountdown = require('./updateCountdown.js')
-const conference_calendar = require('./conference_calendar.js')
 
 const audio = require('./audioControls')
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 
 module.exports = function startBreak (data, callback) {
   global.fetch('themes/' + (data.session.theme || 'default') + '/break.json')
@@ -24,8 +23,7 @@ module.exports = function startBreak (data, callback) {
     const start = exactTime.getDate().getTime()
 
     // Get start time of next session (URL parameter has to be set to correct stream!)
-    let nextSessionStart = new Date(data.session.start)
-    nextSessionStart = exactTime.getDate().getTime() + duration
+    const nextSessionStart = exactTime.getDate().getTime() + duration
 
     // Pass break end to data
     data.session.breakEnd = new Date(nextSessionStart)
@@ -47,19 +45,21 @@ module.exports = function startBreak (data, callback) {
     const music = document.getElementById('intro_audio')
 
     // Play first music track
-    const track1 = schedule.music.tracks[0]
-    setTimeout(function () {
-      music.src = 'music/' + track1.file
-      music.play()
-      data.session.music = track1
-    }, actualDuration - timeStampToMs(track1.start))
+    if (Object.prototype.hasOwnProperty.call(schedule.music, 'tracks')) {
+      const track1 = schedule.music.tracks[0]
+      setTimeout(function () {
+        music.src = 'music/' + track1.file
+        music.play()
+        data.session.music = track1
+      }, actualDuration - timeStampToMs(track1.start))
 
-    // Play second track after the first one has ended
-    music.addEventListener('ended', function () {
-      this.src = 'music/' + schedule.music.tracks[1].file + '?nocache=' + new Date().getTime()
-      this.play()
-      data.session.music = schedule.music.tracks[1]
-    })
+      // Play second track after the first one has ended
+      music.addEventListener('ended', function () {
+        this.src = 'music/' + schedule.music.tracks[1].file + '?nocache=' + new Date().getTime()
+        this.play()
+        data.session.music = schedule.music.tracks[1]
+      })
+    }
 
     // Set music fadeout
     setTimeout(() => audio.fadeOut(music), actualDuration - timeStampToMs(schedule.music.fadeDuration))
@@ -87,7 +87,7 @@ module.exports = function startBreak (data, callback) {
           slide: slide.slide,
           slideTitle: slide.title,
           slideEndTime: new Date(start + timeoutSum + timeStampToMs(slide.duration))
-        }, data, () => { conference_calendar() }), timeoutSum)
+        }, data, () => {}), timeoutSum)
         timeoutSum += timeStampToMs(slide.duration)
       }
     }

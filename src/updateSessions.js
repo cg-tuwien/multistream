@@ -2,7 +2,7 @@ const fs = require('fs')
 const async = require('async')
 
 module.exports = function updateSessions (dataPath, sessions, callback) {
-  let found = []
+  const found = []
 
   fs.watch(
     dataPath,
@@ -42,6 +42,9 @@ module.exports = function updateSessions (dataPath, sessions, callback) {
       withFileTypes: true
     },
     (err, files) => {
+      if (err) {
+        console.log(err.stack)
+      }
       async.each(files,
         (file, done) => {
           if (file.isDirectory()) {
@@ -63,7 +66,7 @@ module.exports = function updateSessions (dataPath, sessions, callback) {
           }
         },
         () => {
-          for (let k in sessions) {
+          for (const k in sessions) {
             if (!found.includes(k)) {
               delete sessions[k]
             }
@@ -76,7 +79,7 @@ module.exports = function updateSessions (dataPath, sessions, callback) {
   )
 }
 
-function watchFile (id, dataFilePath, session, callback, force=false) {
+function watchFile (id, dataFilePath, session, callback, force = false) {
   fs.stat(dataFilePath,
     (err, stats) => {
       if (!err || err.errno !== -2) {
@@ -88,7 +91,7 @@ function watchFile (id, dataFilePath, session, callback, force=false) {
       }
 
       // no file (yet), retry in a second
-      global.setTimeout(() => watchFile (id, dataFilePath, session, callback, true), 1000)
+      global.setTimeout(() => watchFile(id, dataFilePath, session, callback, true), 1000)
     }
   )
 }
@@ -105,19 +108,19 @@ function realWatchFile (id, dataFilePath, session, callback) {
       if (t === 'change') {
         timer = global.setTimeout(
           () => reload(id, dataFilePath, session, callback)
-        , 1000)
+          , 1000)
       } else {
         // got deleted, wait a second and try to reload then
         timer = global.setTimeout(
           () => fs.stat(dataFilePath,
-          (err, stats) => {
-            if (!err || err.errno !== -2) {
-              reload(id, dataFilePath, session, callback)
-            }
+            (err, stats) => {
+              if (!err || err.errno !== -2) {
+                reload(id, dataFilePath, session, callback)
+              }
 
-            watchFile(id, dataFilePath, session, callback)
-          })
-        , 1000)
+              watchFile(id, dataFilePath, session, callback)
+            })
+          , 1000)
       }
     }
   )
@@ -134,12 +137,12 @@ function reload (id, dataFilePath, session, callback) {
 
       try {
         content = JSON.parse(content)
-      } catch(e) {
+      } catch (e) {
         console.error("ERROR: Can't parse data.json of '" + id + "': " + e)
         return callback()
       }
 
-      for (let k in content) {
+      for (const k in content) {
         session[k] = content[k]
       }
 

@@ -1,16 +1,13 @@
-const VideoPlaylist = require('video-playlist')
 const scene = require('./scene.js')
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 const templates = require('./templates')
-
-const conf = require('../conf.json')
 
 const sceneDuration = 10 // seconds
 
 module.exports = function startContinueDiscussion (data, callback) {
-  let urlString = window.location.href;
-  let url = new URL(urlString);
-  let index = parseInt(url.searchParams.get('index') || (data.status ? data.status.programIndex || 0 : 0));
+  const urlString = window.location.href
+  const url = new URL(urlString)
+  const index = parseInt(url.searchParams.get('index') || (data.status ? data.status.programIndex || 0 : 0))
 
   if (!data || !data.session || !data.session.program[index]) {
     return callback()

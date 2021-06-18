@@ -11,7 +11,7 @@ module.exports = {
       (session, id, done) => {
         if (!(id in logfiles)) {
           // ignore close errors
-            console.log('open log', id)
+          console.log('open log', id)
           fs.open('data/' + id + '/log.csv', 'a', (err, fd) => {
             if (err) {
               console.error('Can\'t open log for session ' + id + ': ' + err)
@@ -25,7 +25,7 @@ module.exports = {
         }
       },
       () => {
-        for (let id in logfiles) {
+        for (const id in logfiles) {
           if (!(id in sessions) && logfiles[id]) {
             console.log('closing log', id)
             fs.close(logfiles[id], (err) => {

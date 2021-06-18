@@ -1,8 +1,7 @@
 const moment = require('moment')
 const scene = require('./scene.js')
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 const audio = require('./audioControls')
-const conference_calendar = require('./conference_calendar.js')
 
 module.exports = function startEpilogue (data, callback) {
   global.fetch('themes/' + (data.session.theme || 'default') + '/epilogue.json')
@@ -19,14 +18,14 @@ module.exports = function startEpilogue (data, callback) {
     // Accumulated time for slide timeouts
     let timeoutSum = 0
 
-    function getRandomIntInclusive(min, max) {
-  	min = Math.ceil(min);
-  	max = Math.floor(max);
-  	return Math.floor(Math.random() * (max - min +1)) + min;
+    function getRandomIntInclusive (min, max) {
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random() * (max - min + 1)) + min
     }
 
     // Setup and configure music
-    const trackID = getRandomIntInclusive(0,schedule.music.tracks.length - 1)
+    const trackID = getRandomIntInclusive(0, schedule.music.tracks.length - 1)
     console.log(trackID)
     const music = document.getElementById('intro_audio')
     music.src = 'music/' + schedule.music.tracks[trackID].file
@@ -66,7 +65,7 @@ module.exports = function startEpilogue (data, callback) {
           slide: slide.slide,
           slideTitle: slide.title,
           slideEndTime: new Date(start + timeoutSum + timeStampToMs(slide.duration))
-        }, data, () => { conference_calendar() }), timeoutSum)
+        }, data, () => {}), timeoutSum)
         timeoutSum += timeStampToMs(slide.duration)
       }
     }

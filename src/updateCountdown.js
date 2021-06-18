@@ -1,6 +1,6 @@
 const moment = require('moment')
 
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 
 module.exports = function updateCountdown () {
   const content = document.getElementById('countdown')

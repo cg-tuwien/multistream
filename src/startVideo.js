@@ -5,7 +5,7 @@ const async = {
 }
 
 const scene = require('./scene.js')
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 const centerHighlighted = require('./centerHighlighted')
 const templates = require('./templates')
 const layout = require('./layout')
@@ -17,7 +17,7 @@ const conf = require('../conf.json')
 module.exports = function startVideo (data, callback) {
   const urlString = window.location.href
   const url = new URL(urlString)
-  let index = url.searchParams.get('index') || (data.status ? data.status.programIndex || 0 : 0)
+  const index = url.searchParams.get('index') || (data.status ? data.status.programIndex || 0 : 0)
 
   start1(data, url, index, callback)
 }
@@ -53,24 +53,23 @@ function start1 (data, url, index, callback) {
   if (entry.videoFile) {
     _playlist = [
       {
-        video: 'data/' + data.id + '/' + entry.videoFile,
+        video: 'data/' + data.id + '/' + entry.videoFile
       }
     ]
-  }
-  else if (entry.videoPlaylist) {
+  } else if (entry.videoPlaylist) {
     _playlist = entry.videoPlaylist.map(subentry => {
       subentry.video = subentry.video ? 'data/' + data.id + '/' + subentry.video : null
       return subentry
     })
   }
 
-  render_titles(_playlist, entry, data, () => start2(_playlist, data, entry, url, index, callback))
+  renderTitles(_playlist, entry, data, () => start2(_playlist, data, entry, url, index, callback))
 }
 
 function start2 (_playlist, data, entry, url, index, callback) {
   // Play applause if provided in url parameter
-  let applause = (url.searchParams.has('applause') ? url.searchParams.get('applause') : entry.applause) || 0
-  let applauseEl = new Audio()
+  const applause = (url.searchParams.has('applause') ? url.searchParams.get('applause') : entry.applause) || 0
+  const applauseEl = new Audio()
   applauseEl.src = 'data/applause_talk.mp3'
 
   if (applause) {
@@ -98,8 +97,7 @@ function start2 (_playlist, data, entry, url, index, callback) {
   playlist.on('pauseStart', (entry, pause) => {
     if (pause.applause) {
       playApplause(pause)
-    }
-    else if (pause.id === 'applause') {
+    } else if (pause.id === 'applause') {
       applauseEl.play()
     }
 
@@ -117,8 +115,7 @@ function start2 (_playlist, data, entry, url, index, callback) {
   playlist.on('action', (entry, action) => {
     if (action.applause) {
       playApplause(action)
-    }
-    else if (action.id === 'applause') {
+    } else if (action.id === 'applause') {
       applauseEl.play()
     }
   })
@@ -126,7 +123,7 @@ function start2 (_playlist, data, entry, url, index, callback) {
   playlist.on('endedAll', () => {
     playlist.close()
     if (entry.videoContinueNext) {
-      let index = data.session.program.indexOf(entry) + 1
+      const index = data.session.program.indexOf(entry) + 1
 
       start1(data, url, index, () => {})
 
@@ -156,18 +153,18 @@ function start2 (_playlist, data, entry, url, index, callback) {
   playlist.on('loadedmetadata', updateEndTime)
   playlist.on('seeking', updateEndTime)
   playlist.on('seeked', updateEndTime)
-  playlist.on('next', (playlist_entry) => {
-    const slideIndex = _playlist.indexOf(playlist_entry)
+  playlist.on('next', (playlistEntry) => {
+    const slideIndex = _playlist.indexOf(playlistEntry)
 
     scene.update({
       slideIndex,
-      slideTitle: playlist_entry.title
+      slideTitle: playlistEntry.title
     })
 
     const programList = document.querySelectorAll('#playlist > li')
     if (programList && programList.length) {
       programList.forEach(program => {
-        if (program.getAttribute('data-playlist-index') == slideIndex) {
+        if (program.getAttribute('data-playlist-index') === slideIndex) {
           program.classList.add('highlighted')
         } else {
           program.classList.remove('highlighted')
@@ -197,21 +194,24 @@ function recalc (playlist) {
   return new Date(exactTime.getDate().getTime() + (playlist.duration - playlist.currentTime) * 1000)
 }
 
-function render_titles(playlist, entry, data, callback) {
+function renderTitles (playlist, entry, data, callback) {
   async.eachOf(playlist,
-    (playlist_entry, index, done) => {
+    (playlistEntry, index, done) => {
       const _data = clone(data)
       _data.index = index
       _data.talkIndex = index
       _data.entry = playlist[index]
 
-      if (playlist_entry.pauses) {
-        async.each(playlist_entry.pauses,
+      if (playlistEntry.pauses) {
+        async.each(playlistEntry.pauses,
           (pause, done) => {
             if (pause.template) {
               return templates.render(
                 null, pause.template, _data,
                 (err, result) => {
+                  if (err) {
+                    console.log(err.stack)
+                  }
                   pause.title = result
                   done()
                 }

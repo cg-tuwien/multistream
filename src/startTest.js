@@ -1,11 +1,7 @@
-const moment = require('moment')
-const escHtml = require('escape-html')
 const sprintf = require('extsprintf').sprintf
 
 const communicator = require('./communicator')
-const exactTime = require('./exact-time')
-const websocket = require('./websocket')
-
+const exactTime = require('./exactTime')
 const scenes = require('./scenes.json')
 
 const pageWidth = 1920
@@ -17,22 +13,22 @@ class Test {
     this.loaded = false
 
     // Update list of Scenes
-    let input = document.getElementById('pageSel')
-    while(input.firstChild) {
+    const input = document.getElementById('pageSel')
+    while (input.firstChild) {
       input.removeChild(input.firstChild)
     }
     scenes.forEach(scene => {
-      let option = document.createElement('option')
+      const option = document.createElement('option')
       option.value = scene.page
       option.appendChild(document.createTextNode(scene.title))
 
       input.appendChild(option)
     })
 
-    let urlString = window.location.href
-    let url = new URL(urlString)
+    const urlString = window.location.href
+    const url = new URL(urlString)
 
-    let form = document.getElementById('controls')
+    const form = document.getElementById('controls')
     Array.from(form.elements).forEach(input => {
       if (input.name && url.searchParams.has(input.name)) {
         this.param[input.name] = url.searchParams.get(input.name)
@@ -40,7 +36,7 @@ class Test {
     })
 
     form.onsubmit = () => {
-      let iframe = document.getElementsByTagName('iframe')[0]
+      const iframe = document.getElementsByTagName('iframe')[0]
       iframe.contentWindow.location.reload(true)
 
       return false
@@ -67,15 +63,15 @@ class Test {
   }
 
   updateControls () {
-    let form = document.getElementById('controls')
-    let urlString = window.location.href
-    let url = new URL(urlString)
+    const form = document.getElementById('controls')
+    const urlString = window.location.href
+    const url = new URL(urlString)
 
     // Update list of Streams (Sessions)
     let input = document.getElementById('stream')
     if (communicator.offlineMode) {
       if (input.nodeName === 'SELECT') {
-        let _input = document.createElement('input')
+        const _input = document.createElement('input')
         _input.name = 'stream'
         _input.id = 'stream'
         input.parentNode.insertBefore(_input, input)
@@ -83,7 +79,7 @@ class Test {
       }
     } else {
       if (input.nodeName !== 'SELECT') {
-        let _input = document.createElement('select')
+        const _input = document.createElement('select')
         _input.name = 'stream'
         _input.id = 'stream'
         input.parentNode.insertBefore(_input, input)
@@ -91,12 +87,12 @@ class Test {
       }
 
       if (communicator.streams.length) {
-        while(input.firstChild) {
+        while (input.firstChild) {
           input.removeChild(input.firstChild)
         }
 
         communicator.streams.forEach(k => {
-          let option = document.createElement('option')
+          const option = document.createElement('option')
           option.value = k
           option.appendChild(document.createTextNode(k))
 
@@ -112,7 +108,7 @@ class Test {
     // Update list of Program Points
     input = document.getElementById('index')
     if (communicator.data && communicator.data.session) {
-      while(input.firstChild) {
+      while (input.firstChild) {
         input.removeChild(input.firstChild)
       }
 
@@ -122,7 +118,7 @@ class Test {
       this.param.index = parseInt(this.param.index)
 
       communicator.data.session.program && communicator.data.session.program.forEach((entry, k) => {
-        let option = document.createElement('option')
+        const option = document.createElement('option')
         option.value = k
         option.appendChild(document.createTextNode(entry.title))
 
@@ -152,22 +148,22 @@ class Test {
   }
 
   resize () {
-    var controls = document.getElementById('controls')
+    const controls = document.getElementById('controls')
 
-    var width = window.innerWidth - 4
-    var height = window.innerHeight - controls.offsetHeight - 1 - 4
+    let width = window.innerWidth - 4
+    const height = window.innerHeight - controls.offsetHeight - 1 - 4
 
     if (width / (pageWidth / pageHeight) > height) {
       width = height * (pageWidth / pageHeight)
     }
 
-    var scale = width / pageWidth
+    const scale = width / pageWidth
 
-    var frame = document.getElementById('frame')
-    frame.style.zoom = scale;
-    frame.style.transform = 'scale(' + scale + ')';
+    const frame = document.getElementById('frame')
+    frame.style.zoom = scale
+    frame.style.transform = 'scale(' + scale + ')'
 
-    var wrap = document.getElementById('wrap')
+    const wrap = document.getElementById('wrap')
     wrap.style.width = width + 'px'
     wrap.style.height = (width / (pageWidth / pageHeight)) + 'px'
   }
@@ -175,14 +171,14 @@ class Test {
   update () {
     this.loaded = true
 
-    let iframe = document.getElementsByTagName('iframe')
+    const iframe = document.getElementsByTagName('iframe')
     if (this.param.stream !== communicator.stream) {
       communicator.setStream(this.param.stream)
     }
 
     let url = this.param.pageSel
     let urlParam = ''
-    for (let k in this.param) {
+    for (const k in this.param) {
       if (k && k !== 'pageSel') {
         url += url.match(/\?/) ? '&' : '?'
         url += encodeURIComponent(k) + '=' + encodeURIComponent(this.param[k])
@@ -215,8 +211,11 @@ class Test {
     const data = this.getData()
 
     exactTime.getDate((err, date) => {
+      if (err) {
+        console.log(err.stack)
+      }
       if (data && data.status && data.status.sceneEndTime) {
-        let rest = new Date(data.status.sceneEndTime) - new Date(date)
+        const rest = new Date(data.status.sceneEndTime) - new Date(date)
         if (rest < 0) {
           document.getElementById('countdown').innerHTML = '(expired)'
         } else {
@@ -230,5 +229,6 @@ class Test {
 }
 
 module.exports = function startTest (data, callback) {
+  // eslint-disable-next-line no-new
   new Test(data, callback)
 }

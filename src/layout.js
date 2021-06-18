@@ -38,9 +38,9 @@ class Layout {
     const layout = entry[this.prefix + 'Layout'] || session[this.prefix + 'Layout']
     this.changeLayout(layout)
 
-    templates.render(document.getElementById('bottom_container'), entry[this.prefix + 'BottomTemplate'] || session[this.prefix + 'BottomTemplate'] || defaultTemplates[this.prefix + 'BottomTemplate'] || defaultTemplates['defaultBottomTemplate'], this.data)
-    templates.render(document.getElementById('sidebar_container'), entry[this.prefix + 'SidebarTemplate'] || session[this.prefix + 'SidebarTemplate'] || defaultTemplates[this.prefix + 'SidebarTemplate'] || defaultTemplates['defaultSidebarTemplate'], this.data)
-    templates.render(document.getElementById('title_container'), entry[this.prefix + 'TitleTemplate'] || session[this.prefix + 'TitleTemplate'] || defaultTemplates[this.prefix + 'TitleTemplate'] || defaultTemplates['defaultTitleTemplate'], this.data)
+    templates.render(document.getElementById('bottom_container'), entry[this.prefix + 'BottomTemplate'] || session[this.prefix + 'BottomTemplate'] || defaultTemplates[this.prefix + 'BottomTemplate'] || defaultTemplates.defaultBottomTemplate, this.data)
+    templates.render(document.getElementById('sidebar_container'), entry[this.prefix + 'SidebarTemplate'] || session[this.prefix + 'SidebarTemplate'] || defaultTemplates[this.prefix + 'SidebarTemplate'] || defaultTemplates.defaultSidebarTemplate, this.data)
+    templates.render(document.getElementById('title_container'), entry[this.prefix + 'TitleTemplate'] || session[this.prefix + 'TitleTemplate'] || defaultTemplates[this.prefix + 'TitleTemplate'] || defaultTemplates.defaultTitleTemplate, this.data)
   }
 }
 

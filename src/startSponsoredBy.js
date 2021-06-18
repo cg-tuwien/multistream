@@ -1,9 +1,6 @@
-const VideoPlaylist = require('video-playlist')
 const scene = require('./scene.js')
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 const templates = require('./templates')
-
-const conf = require('../conf.json')
 
 const sceneDuration = 10 // seconds
 
@@ -17,7 +14,7 @@ module.exports = function startSponsoredBy (data, callback) {
       scene.set({
         scene: 'Sponsored By',
         slide: null,
-        sceneEndTime: new Date(exactTime.getDate().getTime() + sceneDuration * 1000),
+        sceneEndTime: new Date(exactTime.getDate().getTime() + sceneDuration * 1000)
       }, data)
 
       callback()

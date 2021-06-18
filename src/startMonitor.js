@@ -3,7 +3,7 @@ const escHtml = require('escape-html')
 const sprintf = require('extsprintf').sprintf
 
 const communicator = require('./communicator')
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 const websocket = require('./websocket')
 
 const conf = require('../conf.json')
@@ -35,9 +35,9 @@ class Monitor {
     global.monitorUpdate = () => this.monitorUpdate()
     global.monitorProgramNext = () => this.monitorProgramNext()
 
-    let register = document.getElementById('register')
+    const register = document.getElementById('register')
     register.onsubmit = () => {
-      websocket.send({host: true, stream: register.elements.stream.value})
+      websocket.send({ host: true, stream: register.elements.stream.value })
 
       if (registerButton && registerButton.parentNode) {
         registerButton.parentNode.removeChild(registerButton)
@@ -46,12 +46,12 @@ class Monitor {
       return false
     }
 
-    websocket.send({monitor: true})
+    websocket.send({ monitor: true })
     callback()
   }
 
   monitorProgramNext () {
-    let register = document.getElementById('register')
+    const register = document.getElementById('register')
 
     register.elements['status.programIndex'].value++
 
@@ -64,21 +64,21 @@ class Monitor {
       data.status = {}
     }
 
-    let register = document.getElementById('register')
+    const register = document.getElementById('register')
 
     if (register.elements.stream.value !== communicator.stream) {
       communicator.setStream(register.elements.stream.value)
     }
 
     Array.from(register.elements).forEach(el => {
-      let m = el.name.match(/^status\.(.*)$/)
+      const m = el.name.match(/^status\.(.*)$/)
       if (m) {
         data.status[m[1]] = el.value
       }
     })
 
-    websocket.send({status: data.status})
-    document.cookie = "status=" + JSON.stringify(data.status)
+    websocket.send({ status: data.status })
+    document.cookie = 'status=' + JSON.stringify(data.status)
   }
 
   setOfflineMode () {
@@ -180,7 +180,7 @@ class Monitor {
     const select = register.elements.stream
 
     streams.forEach(k => {
-      let option = document.createElement('option')
+      const option = document.createElement('option')
       option.value = k
       option.appendChild(document.createTextNode(k))
 
@@ -196,9 +196,12 @@ class Monitor {
     const data = communicator.data
 
     exactTime.getDate((err, date) => {
+      if (err) {
+        console.log(err.stack)
+      }
       document.getElementById('date').innerHTML = moment(date).format('ddd, D. MMM YYYY, H:mm:ss')
       if (data && data.status && data.status.sceneEndTime) {
-        let rest = new Date(data.status.sceneEndTime) - new Date(date)
+        const rest = new Date(data.status.sceneEndTime) - new Date(date)
         if (rest < 0) {
           document.getElementById('countdown').innerHTML = '(please wait)'
         } else {
@@ -212,13 +215,14 @@ class Monitor {
 }
 
 module.exports = function startMonitor (data, callback) {
+  // eslint-disable-next-line no-new
   new Monitor(data, callback)
 }
 
 function allProgramPoints (data, index) {
   if (data.session && data.session.program && Array.isArray(data.session.program)) {
     return data.session.program
-      .map((point, i) => '<option value="' + i + '"' + (index == i ? ' selected' : '') + '>' + (point.id ? escHtml(point.id) + ': ' : '') + escHtml(point.title) + '</option>')
+      .map((point, i) => '<option value="' + i + '"' + (index === i ? ' selected' : '') + '>' + (point.id ? escHtml(point.id) + ': ' : '') + escHtml(point.title) + '</option>')
       .join('')
   }
 

@@ -2,9 +2,9 @@ const templates = require('./templates')
 const scene = require('./scene.js')
 
 module.exports = function startTemplate (data, callback) {
-  let urlString = window.location.href;
-  let url = new URL(urlString);
-  let sceneId = url.searchParams.get('scene') || 'Template'
+  const urlString = window.location.href
+  const url = new URL(urlString)
+  const sceneId = url.searchParams.get('scene') || 'Template'
 
   let entry = {}
   let session = {}
@@ -16,7 +16,7 @@ module.exports = function startTemplate (data, callback) {
     }
   }
 
-  let template = entry['templateContentTemplate'] || session['templateContentTemplate']
+  const template = entry.templateContentTemplate || session.templateContentTemplate
 
   if (template) {
     templates.render(document.getElementById('content'), template, data,

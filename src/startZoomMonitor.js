@@ -4,18 +4,15 @@ const sprintf = require('extsprintf').sprintf
 const VideoPlaylist = require('video-playlist')
 
 const communicator = require('./communicator')
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 const websocket = require('./websocket')
+const playApplause = require('./playApplause')
 
 const conf = require('../conf.json')
 let playlist
 
-let applauseEl = new Audio()
-let applauseDuration
+const applauseEl = new Audio()
 applauseEl.src = 'data/applause_talk.mp3'
-applauseEl.onloadedmetadata = () => {
-  applauseDuration = applauseEl.duration
-}
 
 class Monitor {
   constructor (data, callback) {
@@ -25,7 +22,7 @@ class Monitor {
 
     window.setInterval(this.updateClocks, 100)
 
-    websocket.send({monitor: true})
+    websocket.send({ monitor: true })
     callback()
   }
 
@@ -47,15 +44,12 @@ class Monitor {
       }
 
       if (data.status.scene && data.status.scene.match(/^Prologue/)) {
-        document.getElementById('programIndex').innerHTML = "Prologue"
-      }
-      else if (data.status.scene && data.status.scene.match(/^Epilogue/)) {
-        document.getElementById('programIndex').innerHTML = "Epilogue"
-      }
-      else if ((data.status.scene && data.status.scene.match(/^Live Zoom/)) || (data.status.scene && data.status.scene.match(/^Introduction/))) {
+        document.getElementById('programIndex').innerHTML = 'Prologue'
+      } else if (data.status.scene && data.status.scene.match(/^Epilogue/)) {
+        document.getElementById('programIndex').innerHTML = 'Epilogue'
+      } else if ((data.status.scene && data.status.scene.match(/^Live Zoom/)) || (data.status.scene && data.status.scene.match(/^Introduction/))) {
         document.getElementById('content').innerHTML = '<div id="you_are_live"><div id="status">You are</div><div id="live_container">LIVE</div></div>'
-      }
-      else {
+      } else {
         document.getElementById('programIndex').innerHTML = data.status && data.status.programIndex !== undefined ? escHtml(data.session.program[data.status.programIndex].title) : ''
       }
     } else {
@@ -84,8 +78,7 @@ class Monitor {
       playlist.on('pauseStart', (entry, pause) => {
         if (pause.applause) {
           playApplause(pause)
-        }
-        else if (pause.id === 'applause') {
+        } else if (pause.id === 'applause') {
           applauseEl.play()
         }
 
@@ -103,13 +96,12 @@ class Monitor {
       playlist.on('action', (entry, action) => {
         if (action.applause) {
           playApplause(action)
-        }
-        else if (action.id === 'applause') {
+        } else if (action.id === 'applause') {
           applauseEl.play()
         }
       })
 
-      let time = new Date(data.status.videoEndTime) - new Date().getTime()
+      const time = new Date(data.status.videoEndTime) - new Date().getTime()
       if (time > 0) {
         // TODO: currentTime should be settable before play()
         // see https://github.com/plepe/video-playlist/issues/1
@@ -125,9 +117,12 @@ class Monitor {
     const data = communicator.data
 
     exactTime.getDate((err, date) => {
+      if (err) {
+        console.log(err)
+      }
       document.getElementById('date').innerHTML = moment(date).format('H:mm:ss')
       if (data && data.status && data.status.sceneEndTime) {
-        let rest = new Date(data.status.sceneEndTime) - new Date(date)
+        const rest = new Date(data.status.sceneEndTime) - new Date(date)
         if (rest < 0) {
           document.getElementById('countdown').innerHTML = '(please wait)'
         } else {
@@ -141,15 +136,6 @@ class Monitor {
 }
 
 module.exports = function startMonitor (data, callback) {
+  // eslint-disable-next-line no-new
   new Monitor(data, callback)
-}
-
-function allProgramPoints (data, index) {
-  if (data.session && data.session.program && Array.isArray(data.session.program)) {
-    return data.session.program
-      .map((point, i) => '<option value="' + i + '"' + (index == i ? ' selected' : '') + '>' + escHtml(point.title) + '</option>')
-      .join('')
-  }
-
-  return ''
 }

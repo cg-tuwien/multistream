@@ -1,7 +1,7 @@
 class Theme {
   init (data, callback) {
-    let urlString = window.location.href;
-    let url = new URL(urlString);
+    const urlString = window.location.href
+    const url = new URL(urlString)
     this.id = url.searchParams.get('theme') || (data.session ? data.session.theme : null) || 'eg2021'
     this.data = data
 

@@ -5,12 +5,12 @@ const randomId = require('./randomId.js')
 const columnize = require('./columnize')
 
 const templates = {}
-const templates_callback = {}
+const templatesCallback = {}
 
 const cacheId = conf.developmentMode ? randomId() : require('../cache_id.json')
 
 function _render (dom, id, data, callback) {
-  let result = templates[id].render(data)
+  const result = templates[id].render(data)
   if (dom) {
     dom.innerHTML = result
 
@@ -22,8 +22,6 @@ function _render (dom, id, data, callback) {
   if (callback) {
     callback(null, result)
   }
-
-  return
 }
 
 module.exports = {
@@ -36,11 +34,11 @@ module.exports = {
       return _render(dom, id, data, callback)
     }
 
-    if (id in templates_callback) {
-      return templates_callback[id].push({dom, data, callback})
+    if (id in templatesCallback) {
+      return templatesCallback[id].push({ dom, data, callback })
     }
 
-    templates_callback[id] = [{dom, data, callback}]
+    templatesCallback[id] = [{ dom, data, callback }]
 
     Twig.twig({
       id,
@@ -49,11 +47,11 @@ module.exports = {
       load: (template) => {
         templates[id] = template
 
-        templates_callback[id].forEach(p => {
+        templatesCallback[id].forEach(p => {
           _render(p.dom, id, p.data, p.callback)
         })
 
-        delete templates_callback[id]
+        delete templatesCallback[id]
       }
     })
   }

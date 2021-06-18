@@ -4,7 +4,7 @@ const async = {
   parallel: require('async/parallel')
 }
 const scene = require('./scene.js')
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 const templates = require('./templates')
 const clone = require('./clone.js')
 const centerHighlighted = require('./centerHighlighted')
@@ -47,14 +47,15 @@ module.exports = function startFastForward (data, callback) {
         )
       }
     ],
-    (err) => load2(data, callback)
+    (err) => load2(err, data, callback)
   )
 }
 
-function load2 (data, callback) {
+function load2 (err, data, callback) {
+  if (err) {
+    console.log(err.stack)
+  }
   const programList = document.querySelectorAll('#program > li')
-  let currentIndex = null
-
   const _playlist = data.session.program.map(
     (entry, index) => {
       if (!entry.fastForwardFile) {
@@ -63,15 +64,17 @@ function load2 (data, callback) {
         }
       }
 
-      let result = {
+      const result = {
         index,
         video: 'data/' + data.id + '/' + entry.fastForwardFile,
         videoDuration: entry.fastForwardDuration
       }
 
-      let introDuration = 'fastForwardIntroDuration' in entry ? entry.fastForwardIntroDuration :
-                          'fastForwardIntroDuration' in data.session ? data.session.fastForwardIntroDuration :
-                          defaultIntroDuration
+      const introDuration = 'fastForwardIntroDuration' in entry
+        ? entry.fastForwardIntroDuration
+        : 'fastForwardIntroDuration' in data.session
+          ? data.session.fastForwardIntroDuration
+          : defaultIntroDuration
 
       if (introDuration) {
         result.pauses = [
@@ -110,7 +113,6 @@ function load2 (data, callback) {
   playlist.on('next', video => {
     const index = _playlist.indexOf(video)
     const entry = data.session.program[index]
-    currentIndex = index
     programList.forEach(program => program.classList.remove('highlighted'))
     if (programList[index]) {
       programList[index].classList.add('highlighted')
@@ -128,7 +130,7 @@ function load2 (data, callback) {
   })
 
   const recalc = () => {
-    let update = {
+    const update = {
       sceneEndTime: new Date(exactTime.getDate().getTime() + (playlist.duration - playlist.currentTime) * 1000),
       slideEndTime: new Date(exactTime.getDate().getTime() + (playlist.currentDuration - playlist.currentCurrentTime) * 1000)
     }

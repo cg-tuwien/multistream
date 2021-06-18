@@ -1,5 +1,4 @@
 const moment = require('moment')
-const cookie = require('cookie')
 
 const websocket = require('./websocket')
 const templates = require('./templates')
@@ -20,13 +19,13 @@ module.exports = {
     global.addEventListener('obsSceneChanged', event => {
       if (data.status.scene === event.detail.name) {
         global.sceneStatus = JSON.stringify(data.status)
-        websocket.send({status: data.status})
+        websocket.send({ status: data.status })
       }
     })
   },
 
   set (_status) {
-    for (let k in data.status) {
+    for (const k in data.status) {
       if (!(k in _status) && !doNotRemoveProperties.includes(k)) {
         _status[k] = null
       }
@@ -71,7 +70,7 @@ module.exports = {
 
     for (const k in _status) {
       if (_status[k] === null) {
-        delete(data.status[k])
+        delete (data.status[k])
       } else {
         data.status[k] = _status[k]
       }
@@ -84,13 +83,13 @@ module.exports = {
     if (global.obsstudio) {
       global.obsstudio.getCurrentScene(scene => {
         if (scene.name === data.status.scene) {
-          websocket.send({status: data.status})
-          document.cookie = "status=" + JSON.stringify(data.status)
+          websocket.send({ status: data.status })
+          document.cookie = 'status=' + JSON.stringify(data.status)
         }
       })
     } else if (conf.developmentMode) {
-      websocket.send({status: data.status})
-      document.cookie = "status=" + JSON.stringify(data.status)
+      websocket.send({ status: data.status })
+      document.cookie = 'status=' + JSON.stringify(data.status)
     }
   }
 }

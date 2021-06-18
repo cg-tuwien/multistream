@@ -1,7 +1,7 @@
 const EventEmitter = require('events')
 const cookie = require('cookie')
 
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 const websocket = require('./websocket')
 const randomId = require('./randomId')
 
@@ -38,7 +38,7 @@ class Communicator extends EventEmitter {
       this.offlineMode = false
       this.emit('server-mode')
 
-      websocket.send({livestreamId: this.id})
+      websocket.send({ livestreamId: this.id })
 
       if (this.data) {
         this.data.isHost = false
@@ -60,7 +60,7 @@ class Communicator extends EventEmitter {
       this.id = this.cookies.livestreamId
     } else {
       this.id = randomId(10)
-      document.cookie = "livestreamId=" + this.id
+      document.cookie = 'livestreamId=' + this.id
     }
   }
 
@@ -74,7 +74,7 @@ class Communicator extends EventEmitter {
     }
 
     this.cookieConnected = true
-    let status = this.cookies.status ? JSON.parse(this.cookies.status) : {}
+    const status = this.cookies.status ? JSON.parse(this.cookies.status) : {}
 
     fetch('data/' + this.stream + '/data.json')
       .then(data => data.json())
@@ -100,7 +100,7 @@ class Communicator extends EventEmitter {
       })
 
     this.connectCookiesInterval = global.setInterval(() => {
-      let oldCookies = this.cookies
+      const oldCookies = this.cookies
 
       this.cookies = cookie.parse(document.cookie)
       if (oldCookies.stream && this.cookies.stream !== oldCookies.stream) {
@@ -112,7 +112,6 @@ class Communicator extends EventEmitter {
         this.data.status = this.cookies.status ? JSON.parse(this.cookies.status) : {}
         this.emit('update', this.data)
       }
-
     }, 100)
   }
 
@@ -148,10 +147,10 @@ class Communicator extends EventEmitter {
 
   setStream (_stream) {
     this.stream = _stream
-    document.cookie = "stream=" + this.stream
+    document.cookie = 'stream=' + this.stream
     this.emit('set-stream', this.stream)
 
-    websocket.send({stream: this.stream})
+    websocket.send({ stream: this.stream })
 
     if (this.offlineMode) {
       this.connectCookies()

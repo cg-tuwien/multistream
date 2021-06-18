@@ -3,4 +3,3 @@ module.exports = function playApplause (def) {
   applause.src = 'data/' + def.applause
   applause.play()
 }
-

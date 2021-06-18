@@ -4,10 +4,9 @@ const scene = require('./scene.js')
 const getStartTime = require('./getStartTime.js')
 const updateCountdown = require('./updateCountdown.js')
 const audio = require('./audioControls')
-const exactTime = require('./exact-time')
+const exactTime = require('./exactTime')
 const websocket = require('./websocket')
 const templates = require('./templates')
-const conference_calendar = require('./conference_calendar.js')
 
 module.exports = function startPrologue (data, callback) {
   let sceneName = 'Prologue'
@@ -100,7 +99,7 @@ module.exports = function startPrologue (data, callback) {
           slide: slide.slide,
           slideTitle: slide.title,
           slideEndTime: new Date(sessionStart.getTime() + timeoutSum + timeStampToMs(slide.duration))
-        }, data, () => { conference_calendar() }), remainingTime + timeoutSum)
+        }, data, () => {}), remainingTime + timeoutSum)
         timeoutSum += timeStampToMs(slide.duration)
       }
     }
@@ -131,7 +130,7 @@ module.exports = function startPrologue (data, callback) {
         scene.loadSlide({
           slide: 'programday',
           layout: 'full'
-        }, data, () => { conference_calendar() })
+        }, data)
         break
       case '3':
         scene.loadSlide({

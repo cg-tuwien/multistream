@@ -7,7 +7,7 @@
     "moment": "^2.29.1",
     "twig": "^1.15.4",
     "video-playlist": "git+https://github.com/plepe/video-playlist.git",
-    "ws": "^7.4.0"
+    "ws": "^7.5.0"
   },
   "scripts": {
     "start": "node server.js",
