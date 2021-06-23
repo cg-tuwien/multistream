@@ -66,7 +66,7 @@ function load2 (err, data, callback) {
 
       const result = {
         index,
-        video: 'data/' + data.id + '/' + entry.fastForwardFile,
+        video: '../data/' + data.id + '/' + entry.fastForwardFile,
         videoDuration: entry.fastForwardDuration
       }
 

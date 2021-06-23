@@ -53,12 +53,12 @@ function start1 (data, url, index, callback) {
   if (entry.videoFile) {
     _playlist = [
       {
-        video: 'data/' + data.id + '/' + entry.videoFile
+        video: '../data/' + data.id + '/' + entry.videoFile
       }
     ]
   } else if (entry.videoPlaylist) {
     _playlist = entry.videoPlaylist.map(subentry => {
-      subentry.video = subentry.video ? 'data/' + data.id + '/' + subentry.video : null
+      subentry.video = subentry.video ? '../data/' + data.id + '/' + subentry.video : null
       return subentry
     })
   }
@@ -70,7 +70,7 @@ function start2 (_playlist, data, entry, url, index, callback) {
   // Play applause if provided in url parameter
   const applause = (url.searchParams.has('applause') ? url.searchParams.get('applause') : entry.applause) || 0
   const applauseEl = document.createElement('audio')
-  applauseEl.src = 'data/applause_talk.mp3'
+  applauseEl.src = '../data/applause_talk.mp3'
 
   if (applause) {
     applauseEl.onloadedmetadata = () => {

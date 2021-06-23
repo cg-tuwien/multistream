@@ -44,11 +44,11 @@
     "title": "Live Background"
   },
   {
-    "page": "zoom-monitor.html",
+    "page": "../zoom-monitor.html",
     "title": "Zoom Monitor"
   },
   {
-    "page": "index.html",
+    "page": "../index.html",
     "title": "Monitor"
   }
 ]
