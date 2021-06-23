@@ -1,7 +1,7 @@
 const fs = require('fs')
 const Twig = require('twig')
 
-const conf = require('./conf.json')
+const conf = require('../conf.json')
 
 const data = fs.readFileSync('obs-scene-collection.json-template').toString()
 

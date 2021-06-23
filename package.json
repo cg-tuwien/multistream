@@ -13,8 +13,8 @@
     "start": "node server.js",
     "http-server": "http-server ./ -p 8000",
     "lint": "standard --fix *.js src/*.js",
-    "build": "node create_cache_id.js && npm run build-obs-scene-collection && browserify src/index.js -o dist/app.js",
-    "build-obs-scene-collection": "node compile-obs.js",
+    "build": "node bin/create_cache_id.js && npm run build-obs-scene-collection && browserify src/index.js -o dist/app.js",
+    "build-obs-scene-collection": "node bin/compile-obs.js",
     "watch": "watchify -d src/index.js -o dist/app.js -v",
     "prepare": "npm run build"
   },
