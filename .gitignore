@@ -7,6 +7,6 @@ package-lock.json
 /conf.json
 /obs-scene-collection.json
 /data/
-cache_id.json
+dist/cache_id.json
 /themes/eg2021
 /logs/

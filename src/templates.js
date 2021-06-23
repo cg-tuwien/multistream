@@ -7,7 +7,7 @@ const columnize = require('./columnize')
 const templates = {}
 const templatesCallback = {}
 
-const cacheId = conf.developmentMode ? randomId() : require('../cache_id.json')
+const cacheId = conf.developmentMode ? randomId() : require('../dist/cache_id.json')
 
 function _render (dom, id, data, callback) {
   const result = templates[id].render(data)
