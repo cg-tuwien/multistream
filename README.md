@@ -73,7 +73,6 @@ The following scenes are defined:
 
 | HTML File | JS File | Scene Name | Parameters | Description |
 |------|------------|------------|-------------|
-| empty.html | src/startEmpty.js | Empty | scene=*name*: Override scene name | Empty scene which can be used for scenes without background, but that the server still gets notified about the scene change. |
 | template.html | src/startTemplate.js | Template | scene=*name*: Override scene name | Scene with the default background but no content as such. Can be used, when background should be overlayed by OBS sources. |
 | prologue.html | src/startPrologue.js | "Prologue" OR "Prologue Now" | start=*ISO 8601 time*: timestamp when session starts; start=now: start prologue now | Scene which precedes the session with countdown. Scene "Prologue Now" is configured in OBS to start the Prologue now. |
 | epilogue.html | src/startEpilogue.js | Epilogue | | Scene which ends a session |

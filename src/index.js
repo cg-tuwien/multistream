@@ -21,7 +21,6 @@ const scenes = {
   FastForward: require('./startFastForward'),
   'Sponsored By': require('./startSponsoredBy'),
   Template: require('./startTemplate'),
-  Empty: require('./startEmpty'),
   Monitor: require('./startMonitor'),
   ZoomMonitor: require('./startZoomMonitor'),
   Test: require('./startTest'),
