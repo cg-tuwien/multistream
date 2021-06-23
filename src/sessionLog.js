@@ -48,6 +48,6 @@ module.exports = {
   },
 
   close (id) {
-    logfiles[id].close(log, () => {})
+    logfiles[id].close(() => {})
   }
 }
