@@ -6,7 +6,7 @@ const audio = require('./audioControls')
 const exactTime = require('./exactTime')
 
 module.exports = function startBreak (data, callback) {
-  global.fetch('themes/' + (data.session.theme || 'default') + '/break.json')
+  global.fetch('../themes/' + (data.session.theme || 'default') + '/break.json')
     .then(response => response.json())
     .then(json => {
       loadBreak(json)
@@ -48,14 +48,14 @@ module.exports = function startBreak (data, callback) {
     if (Object.prototype.hasOwnProperty.call(schedule.music, 'tracks')) {
       const track1 = schedule.music.tracks[0]
       setTimeout(function () {
-        music.src = 'music/' + track1.file
+        music.src = '../music/' + track1.file
         music.play()
         data.session.music = track1
       }, actualDuration - timeStampToMs(track1.start))
 
       // Play second track after the first one has ended
       music.addEventListener('ended', function () {
-        this.src = 'music/' + schedule.music.tracks[1].file + '?nocache=' + new Date().getTime()
+        this.src = '../music/' + schedule.music.tracks[1].file + '?nocache=' + new Date().getTime()
         this.play()
         data.session.music = schedule.music.tracks[1]
       })

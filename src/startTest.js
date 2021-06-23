@@ -19,7 +19,7 @@ class Test {
     }
     scenes.forEach(scene => {
       const option = document.createElement('option')
-      option.value = scene.page
+      option.value = 'scenes/' + scene.page
       option.appendChild(document.createTextNode(scene.title))
 
       input.appendChild(option)

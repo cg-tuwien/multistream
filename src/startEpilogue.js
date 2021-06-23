@@ -4,7 +4,7 @@ const exactTime = require('./exactTime')
 const audio = require('./audioControls')
 
 module.exports = function startEpilogue (data, callback) {
-  global.fetch('themes/' + (data.session.theme || 'default') + '/epilogue.json')
+  global.fetch('../themes/' + (data.session.theme || 'default') + '/epilogue.json')
     .then(response => response.json())
     .then(json => {
       loadEpilog(json)
@@ -28,7 +28,7 @@ module.exports = function startEpilogue (data, callback) {
     const trackID = getRandomIntInclusive(0, schedule.music.tracks.length - 1)
     console.log(trackID)
     const music = document.getElementById('intro_audio')
-    music.src = 'music/' + schedule.music.tracks[trackID].file
+    music.src = '../music/' + schedule.music.tracks[trackID].file
     const track = schedule.music.tracks[trackID]
     music.currentTime = timeStampToMs(track.in) / 1000
 

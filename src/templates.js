@@ -42,7 +42,7 @@ module.exports = {
 
     Twig.twig({
       id,
-      href: 'templates/' + id + '.html?' + cacheId,
+      href: '../templates/' + id + '.html?' + cacheId,
       async: true,
       load: (template) => {
         templates[id] = template

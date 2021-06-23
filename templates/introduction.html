@@ -2,7 +2,7 @@
 <div class='introduction'>
   <div class='talk'>
     {% if entry.teaserImage %}
-    <img class="teaserImage" src="data/{{ id }}/{{ entry.teaserImage }}">
+    <img class="teaserImage" src="../data/{{ id }}/{{ entry.teaserImage }}">
     {% endif %}
     <div class='title'>{{ entry.title }}</div>
   </div>
@@ -10,7 +10,7 @@
   {%- for i, p in entry.presenter -%}
   <li>
     {% if p.image %}
-    <img class="presenterImage" src="data/{{ id }}/{{ p.image }}">
+    <img class="presenterImage" src="../data/{{ id }}/{{ p.image }}">
     {% else %}
     <div class="presenterImage"></div>
     {% endif %}

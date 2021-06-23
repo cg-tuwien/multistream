@@ -11,7 +11,7 @@ const templates = require('./templates')
 module.exports = function startPrologue (data, callback) {
   let sceneName = 'Prologue'
 
-  global.fetch('themes/' + (data.session.theme || 'default') + '/prologue.json')
+  global.fetch('../themes/' + (data.session.theme || 'default') + '/prologue.json')
     .then(response => response.json())
     .then(json => {
       loadProlog(json)
@@ -65,7 +65,7 @@ module.exports = function startPrologue (data, callback) {
 
     // Setup and configure music
     const music = document.getElementById('intro_audio')
-    music.src = 'music/' + schedule.music.tracks[0].file
+    music.src = '../music/' + schedule.music.tracks[0].file
     music.currentTime = timeStampToMs(schedule.music.tracks[0].in) / 1000
     setTimeout(() => audio.fadeOut(music), remainingTime + duration - timeStampToMs(schedule.music.fadeDuration) - timeStampToMs(schedule.music.tracks[0].end))
     // Start music 5 min before session start
