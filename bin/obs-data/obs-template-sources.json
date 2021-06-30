@@ -1,0 +1,358 @@
+{
+  "sources": {
+    "ffmpeg_source": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "flags": 0,
+      "hotkeys": {
+        "MediaSource.Pause": [],
+        "MediaSource.Play": [],
+        "MediaSource.Restart": [],
+        "MediaSource.Stop": [],
+        "libobs.mute": [],
+        "libobs.push-to-mute": [],
+        "libobs.push-to-talk": [],
+        "libobs.unmute": []
+      },
+      "id": "ffmpeg_source",
+      "mixers": 255,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "",
+      "prev_ver": 0,
+      "private_settings": {},
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "restart_on_activate": false
+      },
+      "sync": 0,
+      "versioned_id": "ffmpeg_source",
+      "volume": 1.0
+    },
+    "image_source": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "flags": 0,
+      "hotkeys": {},
+      "id": "image_source",
+      "mixers": 0,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "",
+      "prev_ver": 0,
+      "private_settings": {},
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "linear_alpha": false,
+        "unload": false
+      },
+      "sync": 0,
+      "versioned_id": "image_source",
+      "volume": 1.0
+    },
+    "browser_source": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "flags": 0,
+      "hotkeys": {
+        "libobs.mute": [],
+        "libobs.push-to-mute": [],
+        "libobs.push-to-talk": [],
+        "libobs.unmute": []
+      },
+      "id": "browser_source",
+      "mixers": 255,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "",
+      "prev_ver": 0,
+      "private_settings": {},
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "height": 1080,
+        "reroute_audio": true,
+        "restart_when_active": true,
+        "shutdown": true,
+        "url": "",
+        "width": 1920
+      },
+      "sync": 0,
+      "versioned_id": "browser_source",
+      "volume": 1.0
+    },
+    "scene": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "flags": 0,
+      "hotkeys": {},
+      "id": "scene",
+      "mixers": 0,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "",
+      "prev_ver": 0,
+      "private_settings": {},
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "custom_size": false,
+        "id_counter": 2,
+        "items": []
+      },
+      "sync": 0,
+      "versioned_id": "scene",
+      "volume": 1.0
+    },
+    "monitor_capture_no_filter": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "flags": 0,
+      "hotkeys": {},
+      "id": "monitor_capture",
+      "mixers": 0,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "Zoom Screen No Filter",
+      "prev_ver": 0,
+      "private_settings": {
+      },
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "capture_cursor": true,
+        "method": 0,
+        "monitor": 1,
+        "monitor_wgc": 0
+      },
+      "sync": 0,
+      "versioned_id": "monitor_capture",
+      "volume": 1.0
+    },
+    "scene_monitor_no_filer": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "flags": 0,
+      "hotkeys": {
+        "OBSBasic.SelectScene": [],
+        "libobs.hide_scene_item.Zoom Screen No Filter": [
+          {
+            "alt": true,
+            "control": true,
+            "key": "OBS_KEY_F",
+            "shift": true
+          }
+        ],
+        "libobs.show_scene_item.Zoom Screen No Filter": [
+          {
+            "alt": true,
+            "control": true,
+            "key": "OBS_KEY_G",
+            "shift": true
+          }
+        ]
+      },
+      "id": "scene",
+      "mixers": 0,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "Live Zoom No Filter",
+      "prev_ver": 452984833,
+      "private_settings": {},
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "custom_size": false,
+        "id_counter": 5,
+        "items": [
+          {
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0,
+            "crop_bottom": 0,
+            "crop_left": 0,
+            "crop_right": 0,
+            "crop_top": 0,
+            "group_item_backup": false,
+            "hide_transition": {
+              "duration": 0
+            },
+            "id": 5,
+            "locked": false,
+            "name": "Zoom Screen No Filter",
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "private_settings": {},
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "scale_filter": "disable",
+            "show_transition": {
+              "duration": 0
+            },
+            "visible": true
+          }
+        ]
+      },
+      "sync": 0,
+      "versioned_id": "scene",
+      "volume": 1.0
+    },
+    "wasapi_output_capture": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "flags": 0,
+      "hotkeys": {
+        "libobs.mute": [],
+        "libobs.push-to-mute": [],
+        "libobs.push-to-talk": [],
+        "libobs.unmute": []
+      },
+      "id": "wasapi_output_capture",
+      "mixers": 255,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "Audio Output Capture",
+      "prev_ver": 0,
+      "private_settings": {},
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "device_id": "default"
+      },
+      "sync": 0,
+      "versioned_id": "wasapi_output_capture",
+      "volume": 1.0
+    },
+    "monitor_capture_filter": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "filters": [
+        {
+          "balance": 0.5,
+          "deinterlace_field_order": 0,
+          "deinterlace_mode": 0,
+          "enabled": true,
+          "flags": 0,
+          "hotkeys": {
+          },
+          "id": "color_key_filter",
+          "mixers": 0,
+          "monitoring_type": 0,
+          "muted": false,
+          "name": "Zoom Color Key",
+          "prev_ver": 0,
+          "private_settings": {},
+          "push-to-mute": false,
+          "push-to-mute-delay": 0,
+          "push-to-talk": false,
+          "push-to-talk-delay": 0,
+          "settings": {
+            "key_color": 0,
+            "key_color_type": "custom",
+            "similarity": 1,
+            "smoothness": 1
+          },
+          "sync": 0,
+          "versioned_id": "color_key_filter",
+          "volume": 1.0
+        }
+      ],
+      "flags": 0,
+      "hotkeys": {
+      },
+      "id": "monitor_capture",
+      "mixers": 0,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "Zoom Screen",
+      "prev_ver": 0,
+      "private_settings": {},
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "monitor": 1
+      },
+      "sync": 0,
+      "versioned_id": "monitor_capture",
+      "volume": 1.0
+    }
+  },
+  "item": {
+    "align": 5,
+    "bounds": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "bounds_align": 0,
+    "bounds_type": 0,
+    "crop_bottom": 0,
+    "crop_left": 0,
+    "crop_right": 0,
+    "crop_top": 0,
+    "group_item_backup": false,
+    "hide_transition": {
+      "duration": 0
+    },
+    "id": 0,
+    "locked": false,
+    "name": "",
+    "pos": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "private_settings": {},
+    "rot": 0.0,
+    "scale": {
+      "x": 1.0,
+      "y": 1.0
+    },
+    "scale_filter": "disable",
+    "show_transition": {
+      "duration": 0
+    },
+    "visible": true
+  }
+}
