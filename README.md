@@ -4,6 +4,8 @@ Multistream is a node.js based live streaming tool, which was developed for the 
 It is designed to work with [OBS Studio](https://obsproject.com/) for streaming multiple parallel streams managed by a central server.
 The web server provides pages filled with stream content, such as title cards, videos, etc., which are then displayed in OBS via browser sources.
 All content management is done by the server, which allows for the streamers to fully focus on the stream itself.
+
+![Multistream Overview](./doc/multistream_overview.png "Schematic overview of Multistream")
     
 ## Installation
 Install Node.JS
@@ -126,7 +128,7 @@ Each scene will send status updates to the server (and save them to a cookie, in
 * slideEndTime: timestamp of the end of the slide (if known)
 * programIndex: index of the current program point
 
-## Themes
+### Themes
 
 The appearance of the stream HTML files can be customized using themes which can be defined in the `/themes` directroy. 
 A default theme is provieded in the `/default` subdirectory. A documentation on how to create and customize themes can be sound [here](/doc/Theme.md) 
