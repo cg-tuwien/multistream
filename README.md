@@ -1,6 +1,6 @@
 # Multistream
 
-Multistream is a node.js based live streaming tool, which was developed for the [Eurographics'2021](https://conferences.eg.org./eg2021) conference. 
+Multistream is a node.js based live streaming tool, which was developed for the [Eurographics'2021](https://conferences.eg.org/eg2021) conference. 
 It is designed to work with [OBS Studio](https://obsproject.com/) for streaming multiple parallel streams managed by a central server.
 The web server provides pages filled with stream content, such as title cards, videos, etc., which are then displayed in OBS via browser sources.
 All content management is done by the server, which allows for the streamers to fully focus on the stream itself.
@@ -51,49 +51,73 @@ When there are multiple sessions defined, you can select the correct session by:
 Stream Hosts are identified by their IP address.
 
 ## OBS Studio configuration
-### HTML files
-These HTML-Files are used to create the scenes of OBS Studio.
+### Import and set up scene collection
+* Make sure that the OBS scene collection is up to date (see [Scenes](#scnes))
+* In OBS import the scene collection `obs-scene-collection.json` (Scene Collection -> Import -> ... -> choose the file -> Import)
+* Select "Multistream Scenes" from the Scene Collection menu
+    * Set the image source in the OBS Scene "Error Slide" to use "error_slide.png"
+    * Set the source of "Applause File" in the "Live Zoom" scene to the "applause_talk.mp3" file
+    * In the Stream Deck applause key set Soundboard File to "applause_talk.mp3"
+* Setup the audio capture in OBS to use the system system sound output (Jabra EVOLVE LINK MS)
+* Setup the screen capture in OBS capture the secondary display (1920x1080)
+* Setup OBS shortcuts (File -> Settings -> Hotkeys) as following:
+    * Transition: Strg + Alt + Shift + T
+    * Live Zoom No Filter -> Show: Strg + Alt + Shift + F
+    * Live Zoom No Filter -> Hide: Strg + Alt + Shift + D
+    * Applause File -> Strg + Alt + Shift + A
+* Setup OBS to output a full HD stream (File -> Settings -> Video -> Output Resolution -> 1920x1080)
 
-In OBS Studio they are included as local files (they might be converted into PHP Scripts which use a database to load current data).
-
-Inclusion in OBS Studio:
-* Add a Source "Browser"
-* Local file (add file)
-* Resolution: 1920x1080, [x] Control audio via OBS
-* Custom CSS: `body { background-color: white; margin: 0px auto; overflow: hidden; }`
-* [x] Shutdown source when not visible, [x] Refresh browser when scene becomes active
-
-## Youtube
-* Create new live stream -> Later date -> Streaming software
-* Schedule stream:
-  * Title e.g. "EG2021 Stream Test #3"
-  * Availabilty: Unlisted
-  * Science & Technology
-  * Audiance: No, it's not made for kids; don't restrict over 18
-  * Stream settings:
-    * copy stream key into OBS Studio Stream settings
-    * Stream latency: ultra low-latency
-    * Enable Auto-start & Auto-stop
-    * Enable DVR: t.b.d. (it allows pause & seek on streams)
+### Set up custom browser dock
+* Create a custom browser dock (View -> Docks -> Custom Browser Docks...)
+    * Dock Title: "Monitor" 
+    * Url: http://localhost:8000 (or your remote server url as specified in `conf.json`)
 
 ## Documentation
 ### Scenes
-The following scenes are defined:
+Scenes are the main components of which a stream is comprised. 
+Each scene is a HTML page which also has a corresponding OBS scene.
+ 
+The following default scenes are defined (located in `/scenes` dir):
 
 | HTML File | JS File | Scene Name | Parameters | Description |
 |------|------------|------------|-------------|-------------|
+| 01prologue.html | src/startPrologue.js | "Prologue" | start=*ISO 8601 time*: timestamp when session starts; start=now: start prologue now | Scene which precedes the session with countdown. Scene "Prologue Now" is configured in OBS to start the Prologue now. |
+| 02sponsoredBy.html | src/startSponsoredBy.js | Sponsored By | | Scen that displays the session sponsor and plays an applause. |
+| 03fastForward.html | src/startFastForward.js | Fast Forward | | Scene which cycles through all fast forward videos of the session |
+| 04introduction.html | src/startIntroduction.js | Introduction *n+1* | index=*n* | Introduction for the presenter of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Introduction 1) |
+| 05video.html | src/startVideo.js | Video *n+1* | index=*n* | Show the video of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Video 1) |
+| 06ContinueDiscussion.html | src/startContinueDiscussion.js | Continue Discussion | | Scene which plays an applause and displays where the discussion can continue. |
+| 07break.html | src/startBreak.js | Break | | Scene which shows a 20min break slideshow |
+| 08epilogue.html | src/startEpilogue.js | Epilogue | | Scene which ends a session |
 | template.html | src/startTemplate.js | Template | scene=*name*: Override scene name | Scene with the default background but no content as such. Can be used, when background should be overlayed by OBS sources. |
-| prologue.html | src/startPrologue.js | "Prologue" OR "Prologue Now" | start=*ISO 8601 time*: timestamp when session starts; start=now: start prologue now | Scene which precedes the session with countdown. Scene "Prologue Now" is configured in OBS to start the Prologue now. |
-| epilogue.html | src/startEpilogue.js | Epilogue | | Scene which ends a session |
-| fast_forward.html | src/startFastForward.js | Fast Forward | | Scene which cycles through all fast forward videos of the session |
-| video.html | src/startVideo.js | Video *n+1* | index=*n* | Show the video of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Video 1) |
-| introduction.html | src/startIntroduction.js | Introduction *n+1* | index=*n* | Introduction for the presenter of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Introduction 1) |
-| test.html | src/startTest.js | - | - | GUI for testing all scenes |
+
+From these scenes the OBS scene collection is automatically compiled by the `/bin/compile-obs.js` script.  
+The naming scheme of scenes is the index (to get the desired scene order in OBS) followed by the name in camelCase. 
+
+#### Adding new Scenes
+To add a new scene, two files need to be created: a HTML file in the `/scenes` directory following the naming scheme and a corresponding `startSceneName.js` file in the `/src` directory.  
+After creating a new scene the OBS scene collection hast to be re-compiled. To do so either run:
+
+```shell
+npm run build
+```
+
+to re-build the whole project or 
+
+```shell
+npm run build-obs-scene-collection
+```
+to only re-compile the OBS scene collection.
+
+Additinally the new scene has to be added to the `src/scnes.json` file to register it with the scene testing setup.
+
+#### Testing Scenes
+In `test.html` a GUI for testing all scenes is provided, this can be reached by openeing http://localhost:8000/test.html
 
 ### Status-Parameter
 Each scene will send status updates to the server (and save them to a cookie, in case the server is down). The following properties are used:
 
-* scene: name of the current scene (must equal the scene name in OSB)
+* scene: name of the current scene (must equal the scene name in OBS)
 * sceneEndTime: timestamp of the end of the scene (if known)
 * sceneNext: hint, which scene comes next
 * slide: id of the slide within the current scene (if `null`, the other slide-properties will be deleted)
