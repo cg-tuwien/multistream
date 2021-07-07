@@ -99,4 +99,4 @@ template.current_scene = obsSources[0].name
 template.sources = obsSources
 template.scene_order = obsSceneOrder
 
-fs.writeFileSync('test.json', JSON.stringify(template))
+fs.writeFileSync('obs-scene-collection.json', JSON.stringify(template))
