@@ -1,19 +1,33 @@
-# Eurographics 2021 - Live Stream Files
+# Multistream
+
+Multistream is a node.js based live streaming tool, which was developed for the [Eurographics'2021](https://conferences.eg.org./eg2021) conference. 
+It is designed to work with [OBS Studio](https://obsproject.com/) for streaming multiple parallel streams managed by a central server.
+The web server provides pages filled with stream content, such as title cards, videos, etc., which are then displayed in OBS via browser sources.
+All content management is done by the server, which allows for the streamers to fully focus on the stream itself.
+    
 ## Installation
 Install Node.JS
 
-```
-sudo a2enmod proxy proxy_wstunnel
-git clone https://gitlab.cg.tuwien.ac.at/eg2021/livestream-templates
-cd livestream-templates
-cp conf.json-dist conf.json
+```shell
+git clone https://gitlab.cg.tuwien.ac.at/eg2021/multistream
+cd multistream
+cp conf.json-dist conf.json # contains the global configuration
 npm install
 npm start # this will start the NodeJS server, listing for Websocket connections
 ```
 
 Apache configuration:
+```shell
+sudo a2enmod proxy proxy_wstunnel
+```
+
 ```
 ProxyPassMatch   "^/stream/socket$" "ws://127.0.0.1:8080/"
+```
+
+If you don't have Apache, you can start a webserver on http://localhost:8000/ with the following command:
+```
+npm run http-server
 ```
 
 ### Development
@@ -22,11 +36,6 @@ npm run watch # to build OBS scenes and monitor
 ```
 
 Automatically re-compile dist/app.js when sources change.
-
-If you don't have Apache, you can start a webserver on http://localhost:8000/ with the following command:
-```
-npm run http-server
-```
 
 Open http://localhost:8000/test.html to play with the scenes.
 
@@ -72,7 +81,7 @@ Inclusion in OBS Studio:
 The following scenes are defined:
 
 | HTML File | JS File | Scene Name | Parameters | Description |
-|------|------------|------------|-------------|
+|------|------------|------------|-------------|-------------|
 | template.html | src/startTemplate.js | Template | scene=*name*: Override scene name | Scene with the default background but no content as such. Can be used, when background should be overlayed by OBS sources. |
 | prologue.html | src/startPrologue.js | "Prologue" OR "Prologue Now" | start=*ISO 8601 time*: timestamp when session starts; start=now: start prologue now | Scene which precedes the session with countdown. Scene "Prologue Now" is configured in OBS to start the Prologue now. |
 | epilogue.html | src/startEpilogue.js | Epilogue | | Scene which ends a session |
@@ -92,3 +101,8 @@ Each scene will send status updates to the server (and save them to a cookie, in
 * slideTitle: title of the current slide
 * slideEndTime: timestamp of the end of the slide (if known)
 * programIndex: index of the current program point
+
+## Themes
+
+The appearance of the stream HTML files can be customized using themes which can be defined in the `/themes` directroy. 
+A default theme is provieded in the `/default` subdirectory. A documentation on how to create and customize themes can be sound [here](/doc/Theme.md) 
