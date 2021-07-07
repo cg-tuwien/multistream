@@ -81,11 +81,11 @@ The following default scenes are defined (located in `/scenes` dir):
 
 | HTML File | JS File | Scene Name | Parameters | Description |
 |------|------------|------------|-------------|-------------|
-| 01prologue.html | src/startPrologue.js | "Prologue" | start=*ISO 8601 time*: timestamp when session starts; start=now: start prologue now | Scene which precedes the session with countdown. Scene "Prologue Now" is configured in OBS to start the Prologue now. |
+| 01prologue.html | src/startPrologue.js | Prologue | start=*ISO 8601 time*: timestamp when session starts; start=now: start prologue now | Scene which precedes the session with countdown. Scene "Prologue Now" is configured in OBS to start the Prologue now. |
 | 02sponsoredBy.html | src/startSponsoredBy.js | Sponsored By | | Scen that displays the session sponsor and plays an applause. |
 | 03fastForward.html | src/startFastForward.js | Fast Forward | | Scene which cycles through all fast forward videos of the session |
-| 04introduction.html | src/startIntroduction.js | Introduction *n+1* | index=*n* | Introduction for the presenter of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Introduction 1) |
-| 05video.html | src/startVideo.js | Video *n+1* | index=*n* | Show the video of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Video 1) |
+| 04introduction.html | src/startIntroduction.js | Introduction | index=*n* | Introduction for the presenter of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Introduction 1) |
+| 05video.html | src/startVideo.js | Video | index=*n* | Show the video of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Video 1) |
 | 06ContinueDiscussion.html | src/startContinueDiscussion.js | Continue Discussion | | Scene which plays an applause and displays where the discussion can continue. |
 | 07break.html | src/startBreak.js | Break | | Scene which shows a 20min break slideshow |
 | 08epilogue.html | src/startEpilogue.js | Epilogue | | Scene which ends a session |
@@ -109,7 +109,7 @@ npm run build-obs-scene-collection
 ```
 to only re-compile the OBS scene collection.
 
-Additinally the new scene has to be added to the `src/scnes.json` file to register it with the scene testing setup.
+Additinally the new scene has to be added to the `src/scenes.json` file to register it with the scene testing setup.
 
 #### Testing Scenes
 In `test.html` a GUI for testing all scenes is provided, this can be reached by openeing http://localhost:8000/test.html
