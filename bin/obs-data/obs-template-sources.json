@@ -20,8 +20,8 @@
       "mixers": 255,
       "monitoring_type": 0,
       "muted": false,
-      "name": "",
-      "prev_ver": 0,
+      "name": "Applause File",
+      "prev_ver": 452984833,
       "private_settings": {},
       "push-to-mute": false,
       "push-to-mute-delay": 0,
@@ -45,8 +45,8 @@
       "mixers": 0,
       "monitoring_type": 0,
       "muted": false,
-      "name": "",
-      "prev_ver": 0,
+      "name": "Image Error",
+      "prev_ver": 452984833,
       "private_settings": {},
       "push-to-mute": false,
       "push-to-mute-delay": 0,
@@ -151,7 +151,7 @@
       "versioned_id": "monitor_capture",
       "volume": 1.0
     },
-    "scene_monitor_no_filer": {
+    "scene_monitor_no_filter": {
       "balance": 0.5,
       "deinterlace_field_order": 0,
       "deinterlace_mode": 0,
@@ -249,7 +249,7 @@
       "monitoring_type": 0,
       "muted": false,
       "name": "Audio Output Capture",
-      "prev_ver": 0,
+      "prev_ver": 452984833,
       "private_settings": {},
       "push-to-mute": false,
       "push-to-mute-delay": 0,
@@ -281,7 +281,7 @@
           "monitoring_type": 0,
           "muted": false,
           "name": "Zoom Color Key",
-          "prev_ver": 0,
+          "prev_ver": 452984833,
           "private_settings": {},
           "push-to-mute": false,
           "push-to-mute-delay": 0,
@@ -317,6 +317,288 @@
       },
       "sync": 0,
       "versioned_id": "monitor_capture",
+      "volume": 1.0
+    },
+    "scene_error": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "flags": 0,
+      "hotkeys": {
+        "OBSBasic.SelectScene": [],
+        "libobs.hide_scene_item.Image Error": [],
+        "libobs.show_scene_item.Image Error": []
+      },
+      "id": "scene",
+      "mixers": 0,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "Error Slide",
+      "prev_ver": 452984833,
+      "private_settings": {},
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "custom_size": false,
+        "id_counter": 2,
+        "items": [
+          {
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0,
+            "crop_bottom": 0,
+            "crop_left": 0,
+            "crop_right": 0,
+            "crop_top": 0,
+            "group_item_backup": false,
+            "hide_transition": {
+              "duration": 0
+            },
+            "id": 2,
+            "locked": false,
+            "name": "Image Error",
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "private_settings": {},
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "scale_filter": "disable",
+            "show_transition": {
+              "duration": 0
+            },
+            "visible": true
+          }
+        ]
+      },
+      "sync": 0,
+      "versioned_id": "scene",
+      "volume": 1.0
+    },
+    "scene_live_zoom": {
+      "balance": 0.5,
+      "deinterlace_field_order": 0,
+      "deinterlace_mode": 0,
+      "enabled": true,
+      "flags": 0,
+      "hotkeys": {
+        "OBSBasic.SelectScene": [],
+        "libobs.hide_scene_item.Applause File": [],
+        "libobs.hide_scene_item.Audio Output Capture 2": [],
+        "libobs.hide_scene_item.Browser Live Background": [],
+        "libobs.hide_scene_item.Live Zoom No Filter": [],
+        "libobs.hide_scene_item.Zoom Screen": [],
+        "libobs.show_scene_item.Applause File": [],
+        "libobs.show_scene_item.Audio Output Capture 2": [],
+        "libobs.show_scene_item.Browser Live Background": [],
+        "libobs.show_scene_item.Live Zoom No Filter": [],
+        "libobs.show_scene_item.Zoom Screen": []
+      },
+      "id": "scene",
+      "mixers": 0,
+      "monitoring_type": 0,
+      "muted": false,
+      "name": "Live Zoom",
+      "prev_ver": 452984833,
+      "private_settings": {},
+      "push-to-mute": false,
+      "push-to-mute-delay": 0,
+      "push-to-talk": false,
+      "push-to-talk-delay": 0,
+      "settings": {
+        "custom_size": false,
+        "id_counter": 14,
+        "items": [
+          {
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0,
+            "crop_bottom": 0,
+            "crop_left": 0,
+            "crop_right": 0,
+            "crop_top": 0,
+            "group_item_backup": false,
+            "hide_transition": {
+              "duration": 0
+            },
+            "id": 13,
+            "locked": true,
+            "name": "Browser Live Background",
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "private_settings": {},
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "scale_filter": "disable",
+            "show_transition": {
+              "duration": 0
+            },
+            "visible": true
+          },
+          {
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0,
+            "crop_bottom": 0,
+            "crop_left": 0,
+            "crop_right": 0,
+            "crop_top": 0,
+            "group_item_backup": false,
+            "hide_transition": {
+              "duration": 0
+            },
+            "id": 12,
+            "locked": true,
+            "name": "Live Zoom No Filter",
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "private_settings": {},
+            "rot": 0.0,
+            "scale": {
+              "x": 0.94895833730697632,
+              "y": 0.94907408952713013
+            },
+            "scale_filter": "disable",
+            "show_transition": {
+              "duration": 0
+            },
+            "visible": true
+          },
+          {
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0,
+            "crop_bottom": 0,
+            "crop_left": 0,
+            "crop_right": 0,
+            "crop_top": 0,
+            "group_item_backup": false,
+            "hide_transition": {
+              "duration": 0
+            },
+            "id": 5,
+            "locked": true,
+            "name": "Zoom Screen",
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "private_settings": {},
+            "rot": 0.0,
+            "scale": {
+              "x": 0.94739586114883423,
+              "y": 0.94722223281860352
+            },
+            "scale_filter": "disable",
+            "show_transition": {
+              "duration": 0
+            },
+            "visible": true
+          },
+          {
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0,
+            "crop_bottom": 0,
+            "crop_left": 0,
+            "crop_right": 0,
+            "crop_top": 0,
+            "group_item_backup": false,
+            "hide_transition": {
+              "duration": 0
+            },
+            "id": 7,
+            "locked": true,
+            "name": "Audio Output Capture",
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "private_settings": {},
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "scale_filter": "disable",
+            "show_transition": {
+              "duration": 0
+            },
+            "visible": true
+          },
+          {
+            "align": 5,
+            "bounds": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "bounds_align": 0,
+            "bounds_type": 0,
+            "crop_bottom": 0,
+            "crop_left": 0,
+            "crop_right": 0,
+            "crop_top": 0,
+            "group_item_backup": false,
+            "hide_transition": {
+              "duration": 0
+            },
+            "id": 14,
+            "locked": false,
+            "name": "Applause File",
+            "pos": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "private_settings": {},
+            "rot": 0.0,
+            "scale": {
+              "x": 1.0,
+              "y": 1.0
+            },
+            "scale_filter": "disable",
+            "show_transition": {
+              "duration": 0
+            },
+            "visible": true
+          }
+        ]
+      },
+      "sync": 0,
+      "versioned_id": "scene",
       "volume": 1.0
     }
   },

@@ -1,47 +1,43 @@
 [
   {
-    "page": "prologue.html?start=now",
+    "page": "01prologue.html?start=now",
     "title": "Prologue"
   },
   {
-    "page": "prologue.html",
+    "page": "01prologue.html",
     "title": "Prologue"
   },
   {
-    "page": "epilogue.html",
+    "page": "08epilogue.html",
     "title": "Epilogue"
   },
   {
-    "page": "introduction.html",
+    "page": "04introduction.html",
     "title": "Introduction"
   },
   {
-    "page": "video.html",
+    "page": "05video.html",
     "title": "Video"
   },
   {
-    "page": "fast_forward.html",
+    "page": "03fastForward.html",
     "title": "Fast Forwards"
   },
   {
-    "page": "sponsored_by.html",
+    "page": "02sponsoredBy.html",
     "title": "Sponsored By"
   },
   {
-    "page": "break.html?start=now",
+    "page": "07break.html?start=now",
     "title": "Break"
   },
   {
-    "page": "continue_discussion.html",
+    "page": "06continueDiscussion.html",
     "title": "Continue Discussion"
   },
   {
     "page": "template.html",
     "title": "Template"
-  },
-  {
-    "page": "liveBackground.html",
-    "title": "Live Background"
   },
   {
     "page": "../zoom-monitor.html",
