@@ -534,13 +534,13 @@ body.layout-narrow-border {
   background-image: var(--main-background);
 }
 body.layout-narrow-border > #content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   margin: 0;
   width: 95%;
-  height: 95%;
+  max-height: 95%;
+}
+
+body.layout-narrow-border > #content > video {
+    position: static;
 }
 
 body.layout-narrow-border > #bottom_container {
@@ -551,9 +551,9 @@ body.layout-narrow-border > #bottom_container {
   right: 0;
   height: 5%;
   margin: 0;
-    font-size: 1.4em;
-    background: transparent;
-    padding-left: 10px;
+  font-size: 1.4em;
+  background: transparent;
+  padding-left: 10px;
 }
 body.layout-narrow-border > #vertical_logo {
     position: absolute;
@@ -564,42 +564,7 @@ body.layout-narrow-border > #vertical_logo {
     width: 5%;
     height: 95%;
 }
-body.layout-narrow-border > #logo_container_small,
-body.layout-narrow-border > #title_container,
-body.layout-narrow-border > #sidebar_container {
-  display: none;
-}
-
-/*** Layout narrow-border-title ***/
-body.layout-narrow-border-title {
-    background-image: var(--main-background);
-}
-body.layout-narrow-border-title > #content {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0;
-    width: 95%;
-    bottom: 10vh;
-    top: auto;
-    height: 70vh;
-}
-
-
-body.layout-narrow-border-title > #bottom_container {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 5%;
-    margin: 0;
-    font-size: 1.4em;
-    background: transparent;
-    padding-left: 10px;
-}
-
-body.layout-narrow-border-title > #title_container {
+body.layout-narrow-border > #title_container {
     display: flex;
     position: absolute;
     top: 0;
@@ -611,17 +576,8 @@ body.layout-narrow-border-title > #title_container {
     color: var(--text-color-1);
     align-items: center;
 }
-body.layout-narrow-border-title > #vertical_logo {
-    position: absolute;
-    right: 0;
-    bottom: 5%;
-    background-image: var(--logo-side);
-    background-position: center;
-    width: 5%;
-    height: 95%;
-}
-body.layout-narrow-border-title > #sidebar_container {
-    display: none;
+body.layout-narrow-border > #sidebar_container {
+  display: none;
 }
 
 /*** Layout full ***/
@@ -653,14 +609,6 @@ body.layout-full > #title_container {
 body.layout-full > #sidebar_container,
 body.layout-full > #logo_container_small {
   display: block;
-}
-
-#content > video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 /*** Layout full content ***/
