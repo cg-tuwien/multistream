@@ -18,7 +18,7 @@ class Theme {
       })
 
     const style = document.createElement('link')
-    style.href = '../themes/' + this.id + '/style.css'
+    style.href = '../themes/' + this.id + '/theme.css'
     style.rel = 'stylesheet'
     document.head.appendChild(style)
   }
