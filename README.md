@@ -98,6 +98,7 @@ The naming scheme of scenes is the index (to get the desired scene order in OBS)
 
 #### Adding new Scenes
 To add a new scene, two files need to be created: a HTML file in the `/scenes` directory following the naming scheme and a corresponding `startSceneName.js` file in the `/src` directory.  
+The new scene must also be registered in the `index.json` file by adding it to the `scenes` object there. 
 After creating a new scene the OBS scene collection hast to be re-compiled. To do so either run:
 
 ```shell
@@ -111,7 +112,7 @@ npm run build-obs-scene-collection
 ```
 to only re-compile the OBS scene collection.
 
-Additinally the new scene has to be added to the `src/scenes.json` file to register it with the scene testing setup.
+Additionally, the new scene has to be added to the `src/scenes.json` file to register it with the scene testing setup.
 
 #### Testing Scenes
 In `test.html` a GUI for testing all scenes is provided, this can be reached by openeing http://localhost:8000/test.html
