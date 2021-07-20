@@ -21,8 +21,8 @@ const scenes = {
   FastForward: require('./startFastForward'),
   'Sponsored By': require('./startSponsoredBy'),
   Template: require('./startTemplate'),
-  Monitor: require('./startMonitor'),
-  ZoomMonitor: require('./startZoomMonitor'),
+  'OBS Dock': require('./startOBSDock'),
+  StreamMonitor: require('./startStreamMonitor'),
   Test: require('./startTest'),
   'Continue Discussion': require('./startContinueDiscussion')
 }

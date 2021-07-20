@@ -33,7 +33,7 @@
         },
         "scripts-tool": []
     },
-    "name": "Zoom Monitor",
+    "name": "Stream Monitor",
     "preview_locked": false,
     "quick_transitions": [
         {
@@ -85,7 +85,7 @@
             "mixers": 255,
             "monitoring_type": 0,
             "muted": false,
-            "name": "Browser Zoom Monitor",
+            "name": "Browser Stream Monitor",
             "prev_ver": 436273153,
             "private_settings": {},
             "push-to-mute": false,
@@ -95,7 +95,7 @@
             "settings": {
                 "height": 1080,
                 "reroute_audio": true,
-                "url": "https://eg2021.cg.tuwien.ac.at/stream/zoom-monitor.html",
+                "url": "https://eg2021.cg.tuwien.ac.at/stream/stream-monitor.html",
                 "width": 1920
             },
             "sync": 0,
@@ -110,8 +110,8 @@
             "flags": 0,
             "hotkeys": {
                 "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.Browser Zoom Monitor": [],
-                "libobs.show_scene_item.Browser Zoom Monitor": []
+                "libobs.hide_scene_item.Browser Stream Monitor": [],
+                "libobs.show_scene_item.Browser Stream Monitor": []
             },
             "id": "scene",
             "mixers": 0,
@@ -143,7 +143,7 @@
                         "group_item_backup": false,
                         "id": 1,
                         "locked": false,
-                        "name": "Browser Zoom Monitor",
+                        "name": "Browser Steam Monitor",
                         "pos": {
                             "x": 0.0,
                             "y": 0.0

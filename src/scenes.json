@@ -40,11 +40,11 @@
     "title": "Template"
   },
   {
-    "page": "../zoom-monitor.html",
-    "title": "Zoom Monitor"
+    "page": "../stream-monitor.html",
+    "title": "Stream Monitor"
   },
   {
-    "page": "../index.html",
-    "title": "Monitor"
+    "page": "../obs-dock.html",
+    "title": "OBS Dock"
   }
 ]
