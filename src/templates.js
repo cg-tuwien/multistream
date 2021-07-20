@@ -54,5 +54,35 @@ module.exports = {
         delete templatesCallback[id]
       }
     })
+  },
+  renderSlide (dom, id, data, callback) {
+    if ((!dom && !callback) || id === 'none') {
+      return callback ? callback(null) : null
+    }
+
+    if (id in templates) {
+      return _render(dom, id, data, callback)
+    }
+
+    if (id in templatesCallback) {
+      return templatesCallback[id].push({ dom, data, callback })
+    }
+
+    templatesCallback[id] = [{ dom, data, callback }]
+
+    Twig.twig({
+      id,
+      href: '../themes/' + (data.session.theme || 'default') + '/slides/' + id + '.html?' + cacheId,
+      async: true,
+      load: (template) => {
+        templates[id] = template
+
+        templatesCallback[id].forEach(p => {
+          _render(p.dom, id, p.data, p.callback)
+        })
+
+        delete templatesCallback[id]
+      }
+    })
   }
 }

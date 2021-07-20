@@ -43,7 +43,7 @@ module.exports = {
 
     this.update(_status)
 
-    templates.render(document.getElementById('content'), _status.slide, data, () => {
+    templates.renderSlide(document.getElementById('content'), _status.slide, data, () => {
       if (callback) {
         callback()
       }

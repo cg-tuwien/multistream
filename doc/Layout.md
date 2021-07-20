@@ -31,8 +31,8 @@ layout-full-content:
 layout-narrow-border:
  _____________________
 |                   |L|     # 95% content, only a small logo on the side and a narrow bottom title
-| Content           |O|     # Additional logo and title can be displayed above content
-|                   |G|
+|                   |O|     # Additional logo and title can be displayed above content
+| Content           |G|
 |                   |O|
 |___________________|_|
 |_Bottom Narrow_______|
