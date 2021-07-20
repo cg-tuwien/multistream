@@ -4,7 +4,7 @@ const conf = require('../conf.json')
 const template = JSON.parse(fs.readFileSync('bin/obs-data/obs-template.json').toString())
 const sources = JSON.parse(fs.readFileSync('bin/obs-data/obs-template-sources.json').toString())
 
-const scenes = fs.readdirSync('scenes')
+const files = fs.readdirSync('scenes')
 const obsVersion = (conf.obs.obsVersion.major << 24) | (conf.obs.obsVersion.minor << 16) | conf.obs.obsVersion.patch
 
 const obsSources = []
@@ -43,25 +43,28 @@ function createBrowserSource (sceneName, obsScene, scene) {
   return browserSource
 }
 
-scenes.forEach((scene) => {
-  console.log('Building OBS scene for: ', scene)
-  const obsScene = sources.sources.scene
-  obsScene.prev_ver = obsVersion
+files.forEach((fileName) => {
+  const sceneFile = fileName.split('.')
+  if (sceneFile[1] === 'html') {
+    console.log('Building OBS scene for: ', fileName)
+    const obsScene = sources.sources.scene
+    obsScene.prev_ver = obsVersion
 
-  const sceneName = scene.split('.')[0]
-    .replace(/^\d+/, '')
-    .replace(/([A-Z])/g, ' $1')
-    .replace(/^./, function (str) { return str.toUpperCase() })
-  obsScene.name = sceneName
-  obsScene.settings.id_counter = id
+    const sceneName = sceneFile[0]
+      .replace(/^\d+/, '')
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/^./, function (str) { return str.toUpperCase() })
+    obsScene.name = sceneName
+    obsScene.settings.id_counter = id
 
-  obsSceneOrder.push({ name: sceneName })
+    obsSceneOrder.push({ name: sceneName })
 
-  // Add browser as scene item
-  const browserSource = createBrowserSource(sceneName, obsScene, scene)
+    // Add browser as scene item
+    const browserSource = createBrowserSource(sceneName, obsScene, fileName)
 
-  obsSources.push(JSON.parse(JSON.stringify(browserSource)))
-  obsSources.push(JSON.parse(JSON.stringify(obsScene)))
+    obsSources.push(JSON.parse(JSON.stringify(browserSource)))
+    obsSources.push(JSON.parse(JSON.stringify(obsScene)))
+  }
 })
 
 // Add extra scene elements

@@ -1,0 +1,233 @@
+/*** SLIDES ***/
+
+/*** Welcome ***/
+.welcome {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    justify-content: center;
+}
+.welcome > .session-title {
+    color: var(--main-color);
+    text-align: center;
+    font-size: 7rem;
+    line-height: 1;
+}
+.welcome > .date {
+    text-align: center;
+    font-size: 4rem;
+}
+
+/*** Program ***/
+#program_container {
+    margin: 1em;
+    font-size: 2em;
+}
+
+#program_container img {
+    width: auto;
+    height: 60vh;
+    margin-top: -120px;
+}
+
+.program_card {
+    margin: 0.5em;
+    padding-left: 1em;
+    border-left: var(--main-color) 5px solid;
+}
+
+.program_entry {
+    font-size: 0.5em;
+}
+
+/*** Conference News ***/
+.conference_news {
+    font-size: 1.2em;
+    text-align: left;
+    margin: 1em;
+}
+.conference_news > ul {
+    list-style: disc;
+}
+.conference_news li {
+    margin: 1em;
+}
+
+/*** Sponsors ***/
+#sponsor_container {
+    padding: 0.5em;
+    text-align: center;
+}
+
+.sponsor_row {
+    width: 100%;
+}
+
+.sponsor_platinum {
+    margin: 1em;
+    width: 28%;
+    height: auto;
+}
+
+.sponsor_gold {
+    margin: 1em;
+    max-width: 18%;
+    max-height: 3.2em;
+}
+
+.sponsor_silver {
+    margin: 1.5em;
+    max-width: 14%;
+    max-height: 3em;
+}
+
+.sponsor_bronze {
+    margin: 1.5em;
+    max-width: 10%;
+    max-height: 1.5em;
+}
+
+#sponsor_logos {
+    text-align: center;
+}
+
+/*** Image ***/
+#content > #image-box {
+    color: #ffffff;
+    background-color: var(--text-color-1);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: row;
+    transform: skew(30deg);
+    margin-left: -1em;
+    padding: 10px 30px 10px 60px;
+}
+#content > #image-box > .imageLabel {
+    font-size: 1em;
+    padding-left: 8px;
+    transform: skew(-30deg);
+}
+
+/*NEW SLIDES*/
+#credits_container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.credits_card > h2 {
+    font-family: 'Crimson Text', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: var(--text-color-1);
+    margin-bottom: 0.3em;
+}
+
+.credits_card {
+    margin: 25px;
+    color: var(--text-color-2);
+}
+
+.presenter > .presenterName {
+    font-size: 1.05em;
+    display: block;
+    float: none;
+}
+
+.presenter > .presenterAffiliation {
+    font-size: 0.7em;
+    font-style: italic;
+    display: block;
+    float: none;
+}
+
+#prologue_slide_title > h1 {
+    margin-left: 25px;
+}
+
+.credits_card > .presenter_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-basis: 40%;
+}
+
+#key-visual-3a {
+    position: fixed;
+    bottom: 10vh;
+    right: 30vw;
+}
+
+#key-visual-1a {
+    position: fixed;
+    bottom: 10vh;
+    right: 30vw;
+    margin-bottom: -0.4em;
+}
+
+#key-visual-3a > img {
+    width: 400px;
+    height: auto;
+}
+
+#key-visual-1a > img {
+    width: 1000px;
+    height: auto;
+}
+
+#music-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 25px;
+    font-size: 1.8em;
+}
+
+#music-title > h1 {
+    margin: 0;
+    font-size: 75px;
+    line-height: 1;
+}
+
+#music-composer {
+    font-style: italic;
+}
+
+#music-performer {
+    margin-top: 2em;
+}
+
+.vienna-image {
+    object-fit: cover;
+    object-position: left;
+    height: 100%;
+    width: 100%;
+}
+
+.social_image {
+    object-fit: contain;
+    object-position: left;
+    height: 100%;
+    width: 250px;
+    margin-bottom: 1em;
+    margin-top: 3em;
+}
+
+.social_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.social_card > a {
+    font-size: 1.5em;
+}
