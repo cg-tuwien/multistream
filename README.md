@@ -131,4 +131,11 @@ Each scene will send status updates to the server (and save them to a cookie, in
 ### Themes
 
 The appearance of the stream HTML files can be customized using themes which can be defined in the `/themes` directroy. 
-A default theme is provieded in the `/default` subdirectory. A documentation on how to create and customize themes can be sound [here](/doc/Theme.md) 
+A default theme is provieded in the `/default` subdirectory. A documentation on how to create and customize themes can be found [here](/doc/Theme.md)
+
+### Layouts
+
+A layout defines the layout of the screen in regards to the position and size of content, title and additional screen elements. More on layouts can be found [here](/doc/Layout.md) 
+
+
+    
