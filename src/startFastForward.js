@@ -32,7 +32,7 @@ module.exports = function startFastForward (data, callback) {
             _data.talkIndex = talkIndex
             _data.entry = data.session.program[index]
             templates.render(
-              null, 'fastforward-introduction', _data,
+              null, 'fastforward_introduction', _data,
               (err, result) => {
                 entry.introSlide = result
                 done(err)
