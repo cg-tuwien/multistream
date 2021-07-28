@@ -25,22 +25,24 @@ module.exports = function startEpilogue (data, callback) {
     }
 
     // Setup and configure music
-    const trackID = getRandomIntInclusive(0, schedule.music.tracks.length - 1)
-    console.log(trackID)
-    const music = document.getElementById('intro_audio')
-    music.src = '../music/' + schedule.music.tracks[trackID].file
-    const track = schedule.music.tracks[trackID]
-    music.currentTime = timeStampToMs(track.in) / 1000
+    if (schedule.music.tracks && schedule.music.tracks.length > 0) {
+      const trackID = getRandomIntInclusive(0, schedule.music.tracks.length - 1)
+      console.log(trackID)
+      const music = document.getElementById('intro_audio')
+      music.src = '../music/' + schedule.music.tracks[trackID].file
+      const track = schedule.music.tracks[trackID]
+      music.currentTime = timeStampToMs(track.in) / 1000
 
-    // Setup music fadeout
-    setTimeout(() => audio.fadeOut(music),
-      timeStampToMs(track.out) - timeStampToMs(schedule.music.fadeDuration) - timeStampToMs(track.in))
+      // Setup music fadeout
+      setTimeout(() => audio.fadeOut(music),
+        timeStampToMs(track.out) - timeStampToMs(schedule.music.fadeDuration) - timeStampToMs(track.in))
 
-    // Start music
-    music.play()
+      // Start music
+      music.play()
 
-    // Add music to data for display on "currently_playing" slide
-    data.session.music = schedule.music.tracks[trackID]
+      // Add music to data for display on "currently_playing" slide
+      data.session.music = schedule.music.tracks[trackID]
+    }
 
     // Load all slides
     let firstSlide = true

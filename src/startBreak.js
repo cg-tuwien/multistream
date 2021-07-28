@@ -45,7 +45,7 @@ module.exports = function startBreak (data, callback) {
     const music = document.getElementById('intro_audio')
 
     // Play first music track
-    if (Object.prototype.hasOwnProperty.call(schedule.music, 'tracks')) {
+    if (Object.prototype.hasOwnProperty.call(schedule.music, 'tracks' && schedule.music.tracks.length > 0)) {
       const track1 = schedule.music.tracks[0]
       setTimeout(function () {
         music.src = '../music/' + track1.file

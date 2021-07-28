@@ -64,14 +64,16 @@ module.exports = function startPrologue (data, callback) {
     const remainingTime = sessionStart.getTime() - now
 
     // Setup and configure music
-    const music = document.getElementById('intro_audio')
-    music.src = '../music/' + schedule.music.tracks[0].file
-    music.currentTime = timeStampToMs(schedule.music.tracks[0].in) / 1000
-    setTimeout(() => audio.fadeOut(music), remainingTime + duration - timeStampToMs(schedule.music.fadeDuration) - timeStampToMs(schedule.music.tracks[0].end))
-    // Start music 5 min before session start
-    setTimeout(() => music.play(), remainingTime)
-    // Add music to data for display on "currently_playing" slide
-    data.session.music = schedule.music.tracks[0]
+    if (schedule.music.tracks && schedule.music.tracks.length > 0) {
+      const music = document.getElementById('intro_audio')
+      music.src = '../music/' + schedule.music.tracks[0].file
+      music.currentTime = timeStampToMs(schedule.music.tracks[0].in) / 1000
+      setTimeout(() => audio.fadeOut(music), remainingTime + duration - timeStampToMs(schedule.music.fadeDuration) - timeStampToMs(schedule.music.tracks[0].end))
+      // Start music 5 min before session start
+      setTimeout(() => music.play(), remainingTime)
+      // Add music to data for display on "currently_playing" slide
+      data.session.music = schedule.music.tracks[0]
+    }
 
     // Load all slides
     let firstSlide = true

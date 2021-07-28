@@ -3,7 +3,7 @@ body {
     font-family: 'Crimson Text', sans-serif;
     font-size: 20pt;
     margin: 0;
-    background-color: white;
+    background-color: white !important;
     color: var(--text-color-2);
 }
 
