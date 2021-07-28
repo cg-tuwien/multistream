@@ -6,7 +6,7 @@
     --text-color-1: #54758c;
     --text-color-2: #000000;
     --main-logo: url("../themes/default/logo.jpg");
-
+    --logo-side: url("../themes/default/img/logo-side.png");
 }
 
 /*** SLIDES ***/
