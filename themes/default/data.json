@@ -1,10 +1,9 @@
 {
-  "logo": "logo.svg",
   "sponsors": {
-    "bronze": [
+    "platinum": [
       {
-        "name": "LOGO",
-        "image": "../themes/default/logo.svg"
+        "name": "CG TU Wien",
+        "image": "../themes/default//sponsors/cg.png"
       }
     ]
   }

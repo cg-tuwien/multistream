@@ -48,6 +48,7 @@ li div {
 #logo_container {
     background-size: 100%;
     background-repeat: no-repeat;
+    background-image: var(--main-logo);
     width: 70vw;
     height: calc(70vw / 3.1);
 }
@@ -55,6 +56,7 @@ li div {
 #logo_container_small {
     background-size: contain;
     background-repeat: no-repeat;
+    background-image: var(--main-logo);
     height: 15vh;
     margin: 20px;
 }

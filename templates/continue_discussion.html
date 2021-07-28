@@ -8,7 +8,9 @@
 
 <div class='continue-discussion'>
     <div class="info">Continue the discussion in gather.town:</div>
+    {% if entry.locationDetail %}
     <div class="location-icon"><img src="../themes/{{ session.theme }}/icons/{{ locationId|lower }}.png"></div>
+    {% endif %}
     <div class='session-title'>{{location}}</div>
     <div class='date'>at {{ end|date('G:i') }} CEST</div>
     <div class="info">You can also keep asking questions in the Discord channel</div>

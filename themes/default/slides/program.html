@@ -1,0 +1,17 @@
+{% set start = session.start|replace({'Z': ''}) %}
+{% set end = session.start|replace({'Z': ''}) %}
+{% for entry in session.program %}
+    {% set end = end|date_modify('+' ~ entry.duration ~ ' seconds') %}
+{% endfor %}
+<h1>Upcoming Program:</h1>
+<div id="program_container">
+    <div class="program_card">
+        {{ start|date('G:i') }} - {{ end|date('G:i') }} <a>{{ session.title}}</a>
+        {% for entry in session.program %}
+        {% if entry.hidden != true %}
+        <div class="program_entry">{{ start|date('G:i') }} - {{start|date_modify('+' ~ entry.duration ~ ' seconds')|date('G:i')}} <a>{{ entry.title }}</a></div>
+        {% endif %}
+        {% set start = start|date_modify('+' ~ entry.duration ~ ' seconds') %}
+        {% endfor %}
+    </div>
+</div>
