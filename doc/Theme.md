@@ -52,7 +52,7 @@ A slideshow JSON is defined as follows:
 `duration` is the duration of the whole slideshow in `hh:mm:ss`.
 
 Each element of the `slides` array represents a single slide.  
-The `slide` parameter corresponds to a HTML file in the `/templates` directory.  
+The `slide` parameter corresponds to a HTML file in the `/slides` directory of the theme.  
 `title` is a human-readable title for the slide.  
 `duration` the time the slide is displayed in `hh:mm:ss`.
 
