@@ -219,7 +219,7 @@ class Monitor {
   }
 }
 
-module.exports = function startMonitor (data, callback) {
+module.exports = function startOBSDock (data, callback) {
   // eslint-disable-next-line no-new
   new Monitor(data, callback)
 }
