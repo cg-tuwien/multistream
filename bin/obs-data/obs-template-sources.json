@@ -636,5 +636,92 @@
       "duration": 0
     },
     "visible": true
+  },
+  "item_live_zoom_no_filter_scaled": {
+    "align": 5,
+    "bounds": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "bounds_align": 0,
+    "bounds_type": 0,
+    "crop_bottom": 0,
+    "crop_left": 0,
+    "crop_right": 0,
+    "crop_top": 0,
+    "group_item_backup": false,
+    "id": 4,
+    "locked": true,
+    "name": "Live Zoom No Filter",
+    "pos": {
+      "x": 0.0,
+      "y": 212.0
+    },
+    "private_settings": {},
+    "rot": 0.0,
+    "scale": {
+      "x": 0.63437497615814209,
+      "y": 0.63425928354263306
+    },
+    "scale_filter": "disable",
+    "visible": true
+  },
+  "item_zoom_screen_scaled": {
+    "align": 5,
+    "bounds": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "bounds_align": 0,
+    "bounds_type": 0,
+    "crop_bottom": 0,
+    "crop_left": 0,
+    "crop_right": 0,
+    "crop_top": 0,
+    "group_item_backup": false,
+    "id": 2,
+    "locked": true,
+    "name": "Zoom Screen",
+    "pos": {
+      "x": 0.0,
+      "y": 212.0
+    },
+    "private_settings": {},
+    "rot": 0.0,
+    "scale": {
+      "x": 0.63385415077209473,
+      "y": 0.63425928354263306
+    },
+    "scale_filter": "disable",
+    "visible": true
+  },
+  "item_audio_capture": {
+    "align": 5,
+    "bounds": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "bounds_align": 0,
+    "bounds_type": 0,
+    "crop_bottom": 0,
+    "crop_left": 0,
+    "crop_right": 0,
+    "crop_top": 0,
+    "group_item_backup": false,
+    "id": 3,
+    "locked": true,
+    "name": "Audio Output Capture",
+    "pos": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "private_settings": {},
+    "rot": 0.0,
+    "scale": {
+      "x": 1.0,
+      "y": 1.0
+    },
+    "scale_filter": "disable",
+    "visible": true
   }
 }

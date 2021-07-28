@@ -62,6 +62,12 @@ files.forEach((fileName) => {
     // Add browser as scene item
     const browserSource = createBrowserSource(sceneName, obsScene, fileName)
 
+    if (sceneName === 'Introduction') {
+      obsScene.settings.items.push(sources.item_live_zoom_no_filter_scaled)
+      obsScene.settings.items.push(sources.item_zoom_screen_scaled)
+      obsScene.settings.items.push(sources.item_audio_capture)
+    }
+
     obsSources.push(JSON.parse(JSON.stringify(browserSource)))
     obsSources.push(JSON.parse(JSON.stringify(obsScene)))
   }
