@@ -65,7 +65,7 @@ Note that there is a separate program point for the session start called 'Welcom
 
 ### Scene Collection
 The OBS scene collection is automatically compiled from the scene html files in `/scenes` when you run `npm install`. 
-In case you have modified the scenes (see [here](README.md#Scenes) on how to do that), you will have to recompile the scene collection by running
+In case you have modified the scenes (see [here](/doc/Scenes.md) on how to do that), you will have to recompile the scene collection by running
 
 ```shell
 npm run build
