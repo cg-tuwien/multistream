@@ -48,7 +48,7 @@ Here `session` corresponds to a session in the conference.
 A single session usually contains one or more talks with a video, a fast-forward and a teaser image as well as a session sponsor.
 For each session there is a `data.json` file which describes the session program and contains additional metadata such as authors, talk durations and so on.
 
-An example session can be found [here](link.to.file). 
+An example session can be found [here](https://vapor.cg.tuwien.ac.at/index.php/s/xerFxAKyJxeGF3p). 
 
 We will use this dummy session data for our example setup.
 Unpack the session data and move it into the `/data` directory (create it if necessary). 
