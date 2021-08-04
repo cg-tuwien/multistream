@@ -130,62 +130,32 @@ module.exports = function startPrologue (data, callback) {
         break
       case '2':
         scene.loadSlide({
-          slide: 'programday',
+          slide: 'news',
           layout: 'full'
         }, data)
         break
       case '3':
         scene.loadSlide({
-          slide: 'news',
+          slide: 'local_organization',
           layout: 'full'
         }, data)
         break
       case '4':
         scene.loadSlide({
-          slide: 'program_chairs',
+          slide: 'sponsors',
           layout: 'full'
         }, data)
         break
       case '5':
         scene.loadSlide({
-          slide: 'local_organization',
+          slide: 'social_media',
           layout: 'full'
         }, data)
         break
       case '6':
         scene.loadSlide({
-          slide: 'currently_playing',
-          layout: 'full'
-        }, data)
-        break
-      case '7':
-        scene.loadSlide({
-          slide: 'sponsors',
-          layout: 'full'
-        }, data)
-        break
-      case '8':
-        scene.loadSlide({
-          slide: 'social_media',
-          layout: 'full'
-        }, data)
-        break
-      case '9':
-        scene.loadSlide({
-          slide: 'signation',
+          slide: 'welcome',
           layout: 'fullscreen'
-        }, data)
-        break
-      case '0':
-        scene.loadSlide({
-          slide: 'image',
-          layout: 'full'
-        }, data)
-        break
-      case 'a':
-        scene.loadSlide({
-          slide: 'pacific_vis',
-          layout: 'full'
         }, data)
     }
   })
