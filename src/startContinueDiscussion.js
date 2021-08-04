@@ -13,25 +13,25 @@ module.exports = function startContinueDiscussion (data, callback) {
     return callback()
   }
 
-  templates.render(document.getElementById('content'), 'continue_discussion', data,
-    () => {
-      scene.set({
-        scene: 'Continue Discussion',
-        slide: null,
-        videoEndTime: new Date(new Date().getTime() + 1000),
-        videoPlaylist: [
+  scene.set({
+    scene: 'Continue Discussion',
+    programIndex: index,
+    slide: null,
+    videoEndTime: new Date(new Date().getTime() + 1000),
+    videoPlaylist: [
+      {
+        actions: [
           {
-            actions: [
-              {
-                time: 0,
-                id: 'applause'
-              }
-            ]
+            time: 0,
+            id: 'applause'
           }
-        ],
-        sceneEndTime: new Date(exactTime.getDate().getTime() + sceneDuration * 1000)
-      }, data)
-      callback()
-    }
+        ]
+      }
+    ],
+    sceneEndTime: new Date(exactTime.getDate().getTime() + sceneDuration * 1000)
+  }, data)
+
+  templates.render(document.getElementById('content'), 'continue_discussion', data,
+    () => {}
   )
 }
