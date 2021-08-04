@@ -12,7 +12,7 @@ const conf = require('../conf.json')
 let playlist
 
 const applauseEl = document.createElement('audio')
-applauseEl.src = 'data/applause_talk.mp3'
+applauseEl.src = '../music/applause_talk.mp3'
 
 class Monitor {
   constructor (data, callback) {

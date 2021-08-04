@@ -70,7 +70,7 @@ function start2 (_playlist, data, entry, url, index, callback) {
   // Play applause if provided in url parameter
   const applause = (url.searchParams.has('applause') ? url.searchParams.get('applause') : entry.applause) || 0
   const applauseEl = document.createElement('audio')
-  applauseEl.src = '../data/applause_talk.mp3'
+  applauseEl.src = '../music/applause_talk.mp3'
 
   if (applause) {
     applauseEl.onloadedmetadata = () => {
