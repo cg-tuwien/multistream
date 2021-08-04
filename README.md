@@ -41,7 +41,7 @@ Automatically re-compile dist/app.js when sources change.
 
 Open http://localhost:8000/test.html to play with the scenes.
 
-In `conf.json` you can enable the `developmentMode`. Then you can get some functionlity which is reserved for OBS inside a normal browser window too.
+In `conf.json` you can enable the `developmentMode`. Then you can get some functionality which is reserved for OBS inside a normal browser window too.
 
 ## Usage
 When there are multiple sessions defined, you can select the correct session by:
@@ -54,7 +54,7 @@ Stream Hosts are identified by their IP address.
 
 ## OBS Studio configuration
 ### Import and set up scene collection
-* Make sure that the OBS scene collection is up to date (see [Scenes](#scnes))
+* Make sure that the OBS scene collection is up to date (see [Scenes](#scenes))
 * In OBS import the scene collection `obs-scene-collection.json` (Scene Collection -> Import -> ... -> choose the file -> Import)
 * Select "Multistream Scenes" from the Scene Collection menu
     * Set the image source in the OBS Scene "Error Slide" to use "error_slide.png"
@@ -131,8 +131,8 @@ Each scene will send status updates to the server (and save them to a cookie, in
 
 ### Themes
 
-The appearance of the stream HTML files can be customized using themes which can be defined in the `/themes` directroy. 
-A default theme is provieded in the `/default` subdirectory. A documentation on how to create and customize themes can be found [here](/doc/Theme.md)
+The appearance of the stream HTML files can be customized using themes which can be defined in the `/themes` directory. 
+A default theme is provided in the `/default` subdirectory. A documentation on how to create and customize themes can be found [here](/doc/Theme.md)
 
 ### Layouts
 
