@@ -20,7 +20,7 @@ The naming scheme of scenes is the index (to get the desired scene order in OBS)
 
 ### Prologue, Break, Epilogue
 Prologue, Break and Epilogue are slideshow scenes, which either start automatically when the scene becomes active, or in case of the Prologue 5 minutes before the specified `start` time in the sessions `data.json`.
-For these scenes to work, a JSON file which describes the sequence of slides must be provided in the theme (see [Slideshows](/doc/Theme.md#Slideshows))
+For these scenes to work, a JSON file which describes the sequence of slides must be provided in the theme (see [Slideshows](/doc/Theme.md#slideshows))
 
 ### Sponsored By
 The Sponsored By scene displays the session sponsor. A session sponsor must be present in the `data.json` for this scene to work:
