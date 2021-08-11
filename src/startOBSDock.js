@@ -161,6 +161,7 @@ class Monitor {
       this.showRegisterButton()
     }
 
+    document.getElementById('dock-logo').src = 'themes/' + (data.session.theme ? data.session.theme : 'default') + '/logo.png'
     document.getElementById('session-title').innerHTML = data.session ? (data.session.title || '') : ''
     document.getElementById('scene').innerHTML = data.status ? (data.status.scene || '') : ''
     document.getElementById('slide').innerHTML = data.status ? (data.status.slide || '') : ''

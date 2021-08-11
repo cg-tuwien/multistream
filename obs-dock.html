@@ -11,22 +11,49 @@
     <script>window.currentScene = 'OBS Dock'</script>
     <script src='dist/app.js'></script>
 
-    <center><img src="themes/default/logo.png" style="width: 300px;"></center>
+    <div id="dock-logo-container"><img src="" style="width: 300px;" alt="logo" id="dock-logo"></div>
 
     <form id="register" style="margin:0;">
-      <table>
-        <tr><th>Stream</th><td><select id="stream"></select></td></tr>
-        <tr><th>Title</th><td><span id="session-title"></span></td></tr>
-        <tr><th>Date</th><td><span id="date">Wed, 27. Jan 2021, 9:07:53</span></td></tr>
-        <tr><th>Current scene</th><td><span id="scene"></span></td></tr>
-        <tr><th>Current slide</th><td><span id="slideTitle"></span> (<span id="slide"></span>)</td></tr>
-        <tr><th>Next scene</th><td><span id="sceneNext"></span></td></tr>
-        <tr><th>Next scene in</th><td><span id="countdown"></span></td></tr>
-        <tr><th>Current program point</th><td><span id="programIndex"></span></td></tr>
-        <tr><th>Has stream host</th><td><span id="hasHost"></span></td></tr>
-      </table>
-      <pre id="_data"></pre>
-      <div id="error"></td></tr>
+        <table>
+            <tr>
+                <th>Stream</th>
+                <td><label for="stream"></label><select id="stream"></select></td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td><span id="session-title"></span></td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td><span id="date">Wed, 27. Jan 2021, 9:07:53</span></td>
+            </tr>
+            <tr>
+                <th>Current scene</th>
+                <td><span id="scene"></span></td>
+            </tr>
+            <tr>
+                <th>Current slide</th>
+                <td><span id="slideTitle"></span> (<span id="slide"></span>)</td>
+            </tr>
+            <tr>
+                <th>Next scene</th>
+                <td><span id="sceneNext"></span></td>
+            </tr>
+            <tr>
+                <th>Next scene in</th>
+                <td><span id="countdown"></span></td>
+            </tr>
+            <tr>
+                <th>Current program point</th>
+                <td><span id="programIndex"></span></td>
+            </tr>
+            <tr>
+                <th>Has stream host</th>
+                <td><span id="hasHost"></span></td>
+            </tr>
+        </table>
+        <pre id="_data"></pre>
+        <div id="error"></div>
     </form>
     <button class="button" onclick="window.location.reload();">Refresh</button>
 
