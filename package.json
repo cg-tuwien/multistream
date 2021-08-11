@@ -16,12 +16,20 @@
     "build": "node bin/create_cache_id.js && npm run build-obs-scene-collection && browserify src/index.js -o dist/app.js",
     "build-obs-scene-collection": "node bin/compile-obs.js",
     "watch": "watchify -d src/index.js -o dist/app.js -v",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "test": "jest --env=jsdom"
   },
   "devDependencies": {
     "browserify": "^17.0.0",
     "http-server": "^0.12.3",
     "standard": "^16.0.3",
-    "watchify": "^3.11.1"
+    "watchify": "^3.11.1",
+    "jest": "^27.0.6"
+  },
+  "jest": {
+    "verbose": true,
+    "globals": {
+      "window": {}
+    }
   }
 }

@@ -34,7 +34,6 @@ class Layout {
         entry = this.data.session.program[this.data.status.programIndex]
       }
     }
-
     const layout = entry[this.prefix + 'Layout'] || session[this.prefix + 'Layout']
     this.changeLayout(layout)
 
