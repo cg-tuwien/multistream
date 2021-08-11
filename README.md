@@ -10,7 +10,7 @@ All content management is done by the server, which allows for the streamers to 
 ## Installation
 Install Node.JS
 
-```shell script
+```shell
 git clone https://gitlab.cg.tuwien.ac.at/eg2021/multistream
 cd multistream
 cp conf.json-dist conf.json # contains the global configuration
@@ -19,22 +19,22 @@ npm start # this will start the NodeJS server, listing for Websocket connections
 ```
 
 Apache configuration:
-```shell script
+```shell
 sudo a2enmod proxy proxy_wstunnel
 ```
 
-```shell script
+```shell
 ProxyPassMatch   "^/stream/socket$" "ws://127.0.0.1:8080/"
 ```
 
 If you don't have Apache, you can start a webserver on http://localhost:8000/ with the following command:
-```shell script
+```shell
 npm run http-server
 ```
 
 ### Development
 Automatically re-compile dist/app.js when sources change:
-```shell script
+```shell
 npm run watch # to build OBS scenes and monitor
 ```
 
@@ -45,7 +45,7 @@ In `conf.json` you can enable the `developmentMode`. Then you can get some funct
 
 The project is also set up for unit testing via [JEST](https://jestjs.io/). At the moment there are only a few example tests available in `/src/test`.
 To run the tests use the command:
-```shell script
+```shell
 npm run test
 ```
 
