@@ -55,11 +55,15 @@ More on scenes can be found [here](/doc/Scenes.md).
 ### Themes
 
 The appearance of the stream HTML files can be customized using themes which can be defined in the `/themes` directory. 
-A default theme is provided in the `/default` subdirectory. A documentation on how to create and customize themes can be found [here](/doc/Theme.md)
+A default theme is provided in the `/default` subdirectory. A documentation on how to create and customize themes can be found [here](/doc/Theme.md).
 
 ### Layouts
 
-A layout defines the layout of the screen in regards to the position and size of content, title and additional screen elements. More on layouts can be found [here](/doc/Layout.md) 
+A layout defines the layout of the screen in regards to the position and size of content, title and additional screen elements. More on layouts can be found [here](/doc/Layout.md).
+
+### Server
+
+The Multistream server is responsible for managing session data, delivering data to the streaming clients and logging. A more detailed documentation on the server can be found [here](/doc/Server.md). 
 
 
     
