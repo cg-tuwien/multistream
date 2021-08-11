@@ -68,4 +68,51 @@ Note that Prologue and Break count down, while Epilogue counts up.
 `fadeDuration` is the length of the music fade out which will take place at the end of the slideshow
 
 ## Default Theme
+
+The default theme that comes with Multistream is located in `/themes/default/`. 
+It contains simple slideshows for the Prologue, Break and Epilogue scenes in the respective `prologue.json`, `break.json`and `epilogue.json` files.
+
+The slides for the slideshows are located in the `/slides` directory. 
+
+You can define sponsors in the `data.json` file with four different sponsor levels: platinum, gold, silver and bronze. 
+An example sponsor on platinum level is present in the default theme.
+Sponsor logos are located in the `/sponsors` directory. For each sponsor you add in the `data.json` you have to add a logo image here.
+
+The `theme.css`file contains CSS variables for customizing the theme (colors, logos, etc.) as well as the CSS for the slideshow slides.
+
+Images used in the slides should be in the `/img` directory.
+
 ## Customization
+
+Multistream themes are built for easy customization. You can customize each of the above mentioned aspects of the default theme to create your own theme.
+
+To create a new theme, duplicate the default theme and rename the theme's root directory to you new theme name. 
+You will then use this name to specify the theme in a session `data.json` as seen at the beginning of this page.
+
+You can adjust the slideshows of your custom theme using the parameters covered in [Slideshows](#Slideshows). 
+A new slide should consist of an HTML file located in `/slides`, which contains an HTML fragment to be inserted into the content element of the respective slideshow scene.
+Styles for the slides should be located in the `theme.css`.
+
+For adjusting the base CSS of the theme the following CSS variables in `theme.css` can be adjusted:
+
+```css
+:root {
+    --main-color: #c6339e;
+    --accent-color-1: #ecf0f3;
+    --accent-color-2: #e8e8e8;
+    --accent-color-2-alpha: #e8e8e800;
+    --text-color-1: #54758c;
+    --text-color-2: #000000;
+    --main-logo: url("../themes/default/logo.png");
+    --logo-side: url("../themes/default/img/logo-side.png");
+}
+```
+`main-color` is the primary theme color used for headings and accentuation, it works well when this is a color present in the logo.
+
+The `accent-color` fields denote background colors for containers, such as the bottom title container.
+
+`text-color-1` is the text color for headings such as the session name and for slide titles, while the secondary text color is used for text content.
+
+`main-logo` is a high resolution image of the oragnisation or event logo, which is present in nearly every scene.
+
+`logo-side` is a vertical version of the logo which is displayed in the `narrow-border` [Layout](doc/Layout.md). It should have an aspect ratio of about 1:10.
