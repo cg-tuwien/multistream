@@ -4,30 +4,49 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <script>window.currentScene = 'Test'</script>
     <script src='dist/app.js'></script>
-<style>
-body {
-  margin: 0;
-  background: grey;
-}
-#controls {
-  color: white;
-}
-#wrap { width: 1280px; height: 720px; padding: 0; overflow: hidden; border: 2px solid grey; }
-#frame { width: 1920px; height: 1080px; border: 0; background: white; }
-#frame { zoom: 0.333; transform: scale(0.333); transform-origin: 0 0; }
-</style>
+    <style>
+        body {
+            margin: 0;
+            background: grey;
+        }
+
+        #controls {
+            color: white;
+        }
+
+        #wrap {
+            width: 1280px;
+            height: 720px;
+            padding: 0;
+            overflow: hidden;
+            border: 2px solid grey;
+        }
+
+        #frame {
+            width: 1920px;
+            height: 1080px;
+            border: 0;
+            background: white;
+        }
+
+        #frame {
+            zoom: 0.333;
+            transform: scale(0.333);
+            transform-origin: 0 0;
+        }
+    </style>
 </head>
 <body>
 <form action='test.html' method='get' id='controls'>
-Session: <select name='stream' id='stream'></select>
-Scene: <select name='pageSel' id='pageSel'></select>
-Program Point: <select name='index' id='index'></select>
-Countdown: <span id='countdown'></span>
-<input type='submit' value='Reload'>
+    Session: <select name='stream' id='stream'></select>
+    Scene: <select name='pageSel' id='pageSel'></select>
+    Program Point: <select name='index' id='index'></select>
+    Countdown: <span id='countdown'></span>
+    <input type='submit' value='Reload'>
 </form>
 
 <div id="wrap">
-<iframe id="frame"></iframe>
+    <iframe id="frame"></iframe>
 </div>
 </body>
 </html>

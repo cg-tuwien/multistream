@@ -105,8 +105,8 @@ input, select {
 }
 
 #logo > img {
-    width: 600px;
-    height: auto;
+    max-width: 600px;
+    height: 100px;
 }
 
 #time {
@@ -219,4 +219,8 @@ span#programIndex > button {
     background: black;
     color: white;
     border: 1px solid #4c4c4c;
+}
+
+#dock-logo-container {
+    text-align: center;
 }

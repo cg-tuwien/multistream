@@ -32,7 +32,7 @@ class Monitor {
     if (!data) {
       return
     }
-
+    document.getElementById('monitor-logo').src = 'themes/' + (data.session.theme ? data.session.theme : 'default') + '/logo.png'
     document.getElementById('session-title').innerHTML = data.session ? (data.session.title || '') : ''
     document.getElementById('scene').innerHTML = data.status ? (data.status.scene + (data.status.slideTitle ? ' / ' + data.status.slideTitle : '') || '') : ''
     document.getElementById('sceneNext').innerHTML = data.status ? (data.status.sceneNext || '') : ''
