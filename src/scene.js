@@ -1,5 +1,6 @@
 const moment = require('moment')
 
+const setCookie = require('./setCookie')
 const websocket = require('./websocket')
 const templates = require('./templates')
 const layout = require('./layout')
@@ -84,12 +85,12 @@ module.exports = {
       global.obsstudio.getCurrentScene(scene => {
         if (scene.name === data.status.scene) {
           websocket.send({ status: data.status })
-          document.cookie = 'status=' + JSON.stringify(data.status)
+          setCookie('status', JSON.stringify(data.status))
         }
       })
     } else if (conf.developmentMode) {
       websocket.send({ status: data.status })
-      document.cookie = 'status=' + JSON.stringify(data.status)
+      setCookie('status', JSON.stringify(data.status))
     }
   }
 }

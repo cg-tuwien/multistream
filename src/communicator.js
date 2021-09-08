@@ -2,6 +2,7 @@ const EventEmitter = require('events')
 const cookie = require('cookie')
 
 const exactTime = require('./exactTime')
+const setCookie = require('./setCookie')
 const websocket = require('./websocket')
 const randomId = require('./randomId')
 
@@ -21,7 +22,7 @@ class Communicator extends EventEmitter {
         this.connectCookies()
       }
 
-      document.cookie = 'serverOffline=1'
+      setCookie('serverOffline', '1')
       if (!this.offlineMode) {
         this.offlineMode = true
         this.emit('offline-mode')
@@ -34,7 +35,7 @@ class Communicator extends EventEmitter {
     })
 
     websocket.on('open', (e) => {
-      document.cookie = 'serverOffline=0'
+      setCookie('serverOffline', '0')
       this.offlineMode = false
       this.emit('server-mode')
 
@@ -60,7 +61,7 @@ class Communicator extends EventEmitter {
       this.id = this.cookies.livestreamId
     } else {
       this.id = randomId(10)
-      document.cookie = 'livestreamId=' + this.id
+      setCookie('livestreamId', this.id)
     }
   }
 
@@ -147,7 +148,7 @@ class Communicator extends EventEmitter {
 
   setStream (_stream) {
     this.stream = _stream
-    document.cookie = 'stream=' + this.stream
+    setCookie('stream', this.stream)
     this.emit('set-stream', this.stream)
 
     websocket.send({ stream: this.stream })

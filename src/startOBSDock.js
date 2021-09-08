@@ -2,6 +2,7 @@ const moment = require('moment')
 const escHtml = require('escape-html')
 const sprintf = require('extsprintf').sprintf
 
+const setCookie = require('./setCookie')
 const communicator = require('./communicator')
 const exactTime = require('./exactTime')
 const websocket = require('./websocket')
@@ -77,8 +78,8 @@ class Monitor {
       }
     })
 
-    websocket.send({ status: data.status })
-    document.cookie = 'status=' + JSON.stringify(data.status)
+    websocket.send({status: data.status})
+    setCookie('status', JSON.stringify(data.status))
   }
 
   setOfflineMode () {
