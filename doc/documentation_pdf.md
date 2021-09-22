@@ -1,4 +1,10 @@
-# Multistream
+---
+  title: Multistream
+  author: Johannes Eschner
+...
+
+# Overview
+
 
 Multistream is a node.js based live streaming tool, which was developed for the [Eurographics'2021](https://conferences.eg.org/eg2021) conference. 
 It is designed to work with [OBS Studio](https://obsproject.com/) for streaming multiple parallel streams managed by a central server.
@@ -7,7 +13,7 @@ All content management is done by the server, which allows for the streamers to 
 
 ![Multistream Overview](./multistream_overview.png "Schematic overview of Multistream")
     
-## Installation
+# Installation
 Install Node.JS
 
 ```bash
@@ -32,13 +38,13 @@ If you don't have Apache, you can start a webserver on http://localhost:8000/ wi
 npm run http-server
 ```
 
-### Development
+## Development
 Automatically re-compile dist/app.js when sources change:
 ```bash
 npm run watch # to build OBS scenes and monitor
 ```
 
-### Testing
+## Testing
 You can manually test the scenes here: http://localhost:8000/test.html.
 
 In `conf.json` you can enable the `developmentMode`. Then you can get some functionality which is reserved for OBS inside a normal browser window too.
@@ -49,7 +55,7 @@ To run the tests use the command:
 npm run test
 ```
 
-## Usage
+# Usage
 ## Setting up a Live Stream
 
 This is a complete guide on setting up a live stream from scratch, populating it with data and streaming via OBS.
@@ -162,8 +168,9 @@ We used a profile, where each OBS scene has a dedicated button on the Stream Dec
 In order to insert live video sources into the stream, we capture a Zoom meeting via screen capture of a second display. 
 This captured video is then overlaid in the OBS scenes 'Live Zoom' and 'Introduction'.
 
-### Streaming the Session
+## Streaming the Session
 To stream the actual session the following steps need to be taken:
+
 * In the monitor dock select the upcoming session ('Example') from the “Stream” drop down
 * In the monitor dock click “Register as Stream Host” (This claims the 'Example' stream on the stream server and allows OBS to control this session stream)
 * Make sure that “Current Program point” is set to the first entry in the drop down (In our case 'Welcome and Introduction')
@@ -178,58 +185,58 @@ To provide the correct data for each program point, you use the OBS Dock.
 Here you select the "Current Program Point". 
 E.g. when you want to show the second talk, you choose the according program point and then transition to the "Video" scene.
 
-## Documentation
-### Scenes
+# Documentation
+## Scenes
 Scenes are the main components of which a stream is comprised. 
 Each scene is a HTML page which also has a corresponding OBS scene.
 
-#### Overview
+### Overview
 The following default scenes are defined (located in `/scenes` dir):
 
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
-| HTML File / JS File              | Scene Name   | Parameters                        | Description                                   |
-+==================================+==============+===================================+===============================================+
-| 01prologue.html\                 | Prologue     | start=*ISO 8601 time*: timestamp  | Scene which precedes the session with         |
-| startPrologue.js                 |              | when session starts;\             | countdown. Scene "Prologue Now" is            |   
-|                                  |              | start=now: start prologue now\    | configured in OBS to start the Prologue now.  | 
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
-| 02sponsoredBy.html\              | Sponsored By |                                   | Scene that displays the session sponsor and   |
-| sponsoredBy.js\                  |              |                                   | plays an applause.\                           |
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
-| 03fastForward.html\              | Fast Forward |                                   | Scene which cycles through all fast           |
-| startFastForward.js\             |              |                                   | forward videos of the session.\               |
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
-| 04introduction.html\             | Introduction | index=*n*                         | Introduction for the presenter of the *n*th   |
-| startIntroduction.js\            |              |                                   | program point. The index-parameter counts     |
-|                                  |              |                                   | from 0, the scene name from 1 (?index=0       | 
-|                                  |              |                                   | -> Introduction 1)\                           |  
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
-| 05video.html\                    | Video        | index=*n*                         | Show the video of the *n*th program point.    |
-| startVideo.js\                   |              |                                   | The index-parameter counts from 0, the scene  |
-|                                  |              |                                   | name from 1 (?index=0 -> Video 1)\            |   
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
-| 06ContinueDiscussion.html\       | Continue     |                                   | Scene which plays an applause and displays    |
-| startContinueDiscussion.js\      | Discussion   |                                   | where the discussion can continue.            |
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
-| 07break.html\                    | Break        |                                   | Scene which shows a 20min break slideshow     |
-| startBreak.js\                   |              |                                   |                                               |   
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
-| 08epilogue.html\                 | Epilogue     |                                   | Scene which ends a session                    |
-| startEpilogue.js\                |              |                                   |                                               |   
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
-| template.html\                   | Template     | scene=*name*: Override scene name | Scene with the default background but no      |
-| startTemplate.js\                |              |                                   | content as such. Can be used, when            |
-|                                  |              |                                   | background should be overlaid by OBS sources.\|  
-+----------------------------------+--------------+-----------------------------------+-----------------------------------------------+
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
+| Scene Name   | HTML File / JS File              | Parameters                        | Description                                   |
++==============+==================================+===================================+===============================================+
+| Prologue     | 01prologue.html\                 | start=*ISO 8601 time*: timestamp  | Scene which precedes the session with         |
+|              | startPrologue.js                 | when session starts;\             | countdown. Scene "Prologue Now" is            |   
+|              |                                  | start=now: start prologue now\    | configured in OBS to start the Prologue now.  | 
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
+| Sponsored By | 02sponsoredBy.html\              |                                   | Scene that displays the session sponsor and   |
+|              | sponsoredBy.js\                  |                                   | plays an applause.\                           |
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
+| Fast Forward | 03fastForward.html\              |                                   | Scene which cycles through all fast           |
+|              | startFastForward.js\             |                                   | forward videos of the session.\               |
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
+| Introduction | 04introduction.html\             | index=*n*                         | Introduction for the presenter of the *n*th   |
+|              | startIntroduction.js\            |                                   | program point. The index-parameter counts     |
+|              |                                  |                                   | from 0, the scene name from 1 (?index=0       | 
+|              |                                  |                                   | -> Introduction 1)\                           |  
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
+| Video        | 05video.html\                    | index=*n*                         | Show the video of the *n*th program point.    |
+|              | startVideo.js\                   |                                   | The index-parameter counts from 0, the scene  |
+|              |                                  |                                   | name from 1 (?index=0 -> Video 1)\            |   
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
+| Continue     | 06ContinueDiscussion.html\       |                                   | Scene which plays an applause and displays    |
+| Discussion   | startContinueDiscussion.js\      |                                   | where the discussion can continue.\           |
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
+| Break        | 07break.html\                    |                                   | Scene which shows a 20min break slideshow     |
+|              | startBreak.js\                   |                                   |                                               |   
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
+| Epilogue     | 08epilogue.html\                 |                                   | Scene which ends a session                    |
+|              | startEpilogue.js\                |                                   |                                               |   
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
+| Template     | template.html\                   | scene=*name*: Override scene name | Scene with the default background but no      |
+|              | startTemplate.js\                |                                   | content as such. Can be used, when            |
+|              |                                  |                                   | background should be overlaid by OBS sources.\|  
++--------------+----------------------------------+-----------------------------------+-----------------------------------------------+
 
 From these scenes the OBS scene collection is automatically compiled by the `/bin/compile-obs.js` script.  
 The naming scheme of scenes is the index (to get the desired scene order in OBS) followed by the name in camelCase.
 
-#### Prologue, Break, Epilogue
+### Prologue, Break, Epilogue
 Prologue, Break and Epilogue are slideshow scenes, which either start automatically when the scene becomes active, or in case of the Prologue 5 minutes before the specified `start` time in the sessions `data.json`.
 For these scenes to work, a JSON file which describes the sequence of slides must be provided in the theme (see [Slideshows](#slideshows))
 
-#### Sponsored By
+### Sponsored By
 The Sponsored By scene displays the session sponsor. A session sponsor must be present in the `data.json` for this scene to work:
 ```json
 "sponsored_by": [
@@ -241,15 +248,15 @@ The Sponsored By scene displays the session sponsor. A session sponsor must be p
 ```
 Multiple sponsors can be added for a session.
 
-#### Fast Forward
+### Fast Forward
 This scene plays all fast forward videos present in the `data.json` one after another, each prefaced by an introduction slide.
 The display duration of the introduction slide can be specified by setting a value (in seconds) for `fastForwardIntroDuration` in the `data.json` either on program point or per session.
 
-#### Introduction
+### Introduction
 The Introduction scene reserves the left part of the layout for a live video to be inserted, while in the right column info on the current program point is displayed.
 The layout template for the introduction can be overwritten in the `data.json` by setting a value for `introductionContentTemplate` either on program point or per session.
 
-#### Video
+### Video
 In the Video scene a video or video playlist as specified in the `data.json` is played.
 A video program point can either be specified as a single video:
 ```json
@@ -305,7 +312,8 @@ Alternatively, you can specify a video playlist (see https://github.com/plepe/vi
 }
 ```
 
-Parameter:
+Parameters:
+
 * videoFile: a file in the same directory as data.json
 * videoPlaylist: instead of videoFile a playlist
 * videoLayout: which layout to use: 'fullscreen' (default), 'bottom-title', 'preview'
@@ -316,7 +324,7 @@ Parameter:
 
 `template` parameters in playlist pauses will be rendered via Twig.
 
-#### Continue Discussion
+### Continue Discussion
 The Continue Discussion scene is intended to be displayed after each video talk. 
 While it is displayed an applause sound is played back and a location and time where further discussion can take place is displayed.
 The displayed time is the end time of the session.
@@ -334,7 +342,7 @@ You can also specify an icon for the location using the `locationIcon` parameter
 ]
 ``` 
 
-#### Adding new Scenes
+### Adding new Scenes
 To add a new scene, two files need to be created: a HTML file in the `/scenes` directory following the naming scheme and a corresponding `startSceneName.js` file in the `/src` directory.  
 The new scene must also be registered in the `index.json` file by adding it to the `scenes` object there. 
 After creating a new scene the OBS scene collection hast to be re-compiled. To do so either run:
@@ -352,10 +360,10 @@ to only re-compile the OBS scene collection.
 
 Additionally, the new scene has to be added to the `src/scenes.json` file to register it with the scene testing setup.
 
-#### Testing Scenes
+### Testing Scenes
 In `test.html` a GUI for testing all scenes is provided, this can be reached by openeing http://localhost:8000/test.html
 
-### Status-Parameter
+## Status-Parameters
 Each scene will send status updates to the server (and save them to a cookie, in case the server is down). The following properties are used:
 
 * scene: name of the current scene (must equal the scene name in OBS)
@@ -367,7 +375,7 @@ Each scene will send status updates to the server (and save them to a cookie, in
 * slideEndTime: timestamp of the end of the slide (if known)
 * programIndex: index of the current program point
 
-### Themes
+## Themes
 
 The appearance of the stream HTML files can be customized using themes which can be defined in the `/themes` directory. 
 A default theme is provided in the `/default` subdirectory. 
@@ -385,7 +393,7 @@ The theme is defined on session-level, by adding the desired theme name to the s
 If no theme is provided in the session `data.json` the default theme will be used. 
 A theme has to be a subdirectory of the `themes` directory and contains a theme `data.json` which contains the basic theme settings.
 
-#### Slideshows
+### Slideshows
 Apart from that a theme also contains JSON files for sildeshows such as the Prologue and Epilogue scenes. 
 These slideshows are loaded by the respective `startSlideshow.js` (e.g. [startPrologue.js](src/startPrologue.js)) when their respective scenes become active. 
 A slideshow JSON is defined as follows:
@@ -438,7 +446,7 @@ Note that Prologue and Break count down, while Epilogue counts up.
 
 `fadeDuration` is the length of the music fade out which will take place at the end of the slideshow
 
-#### Default Theme
+### Default Theme
 
 The default theme that comes with Multistream is located in `/themes/default/`. 
 It contains simple slideshows for the Prologue, Break and Epilogue scenes in the respective `prologue.json`, `break.json`and `epilogue.json` files.
@@ -453,7 +461,7 @@ The `theme.css`file contains CSS variables for customizing the theme (colors, lo
 
 Images used in the slides should be in the `/img` directory.
 
-#### Customization
+### Customization
 
 Multistream themes are built for easy customization. You can customize each of the above mentioned aspects of the default theme to create your own theme.
 
@@ -488,7 +496,7 @@ The `accent-color` fields denote background colors for containers, such as the b
 
 `logo-side` is a vertical version of the logo which is displayed in the `narrow-border` [Layout](#layout). It should have an aspect ratio of about 1:10.
 
-#### Layouts
+### Layouts
 
 A layout defines the layout of the screen in regards to the position and size of content, title and additional screen elements.
 
@@ -502,7 +510,8 @@ The slides consist of the several containers:
 There's a default layout for each scene, set as class in the html file to the body tag ('layout-*layout*`, e.g. 'layout-fullscreen'). The body tag also has a 'data-scene' attribute which declares the scene (and therefore the prefix to use for the templates).
 
 You can override the template for the current scene by setting '*prefix*Layout' either to the program entry or the session. The following layouts are available:
-<pre>
+
+```
 layout-full:
  _____________________
 |              |      |     # Default layout with smaller content area and additional sidebar 
@@ -538,7 +547,7 @@ layout-fullscreen:
 |                     |
 |                     |
 |_____________________| 
-</pre>  
+```  
 If you don't want a template to be rendered in the block, use 'none'.
 
 In template.html, you can set a template for the main content: `templateContentTemplate`.
@@ -563,7 +572,7 @@ Additionally, the layout can also be changed on a per-slide level in slideshows 
 
    
 
-### Server
+# Server
 
 The Multistream server is responsible for managing session data, delivering data to the streaming clients and logging.
 
@@ -573,11 +582,11 @@ To start the server use the following command:
 npm start
 ```
 
-### Communication with Clients
+## Communication with Clients
 
 The server establishes communication with clients as follows:
 
-#### Host is not registered yet
+### Host is not registered yet
 * Host connect
 * Server message list of defined streams, e.g. {"streams":["foo","bar"],"date":"2020-01-01T01:01:01.123Z"}
 * Host message {host:true} // optionally: stream:"bar"
@@ -585,7 +594,7 @@ The server establishes communication with clients as follows:
 * Server message {id:'foo',session:...,status:...,...}
 * The last message will be repeated, when the status changes
 
-#### Host registers on /
+### Host registers on /
 * Host connect
 * Server message list of defined streams, e.g. {streams:[foo, bar]}
 * Host message {stream:bar}
@@ -593,18 +602,18 @@ The server establishes communication with clients as follows:
 * Server message {id:'bar',session:...,...}
 * The last message will be repeated, when the status changes
 
-#### Host sends status update
+### Host sends status update
 * Host message {status:{scene:...,title:...,...}}
 * Server message {id:'bar',session:...,...} to all clients of this stream
 
-#### Client
+### Client
 * Client connect
 * Server message list of defined streams, e.g. {streams:[foo, bar]}
 * Client message {client:true,id:'foo'}
 * Server message {id:'foo',session:...,...}
 * The last message will be repeated, when the status changes
 
-### Logging
+## Logging
 
 The server creates a `log.csv` file for each session in the session's root directory. 
 Here each scene transition is logged with a timestamp. 
