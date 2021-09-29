@@ -1,5 +1,5 @@
 # Layouts
-The slides consist of the several containers:
+The slides consist of several containers:
 
 * title_container (next to the logo)
 * bottom_container (line on the bottom)
@@ -65,7 +65,7 @@ The default templates are defined in `src/layoutTemplates.json`.
 }
 ```
 
-For each session the layout for prologue, break and epilogue can be set in the data.json file.
+For each session the layout for prologue, break, and epilogue can be set in the data.json file.
 Additionally, the layout can also be changed on a per-slide level in slideshows such as in the Prologue scene, where the signation is displayed in the 'Fullscreen' layout while the other slides use the 'Full' layout.
 
    

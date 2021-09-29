@@ -12,7 +12,7 @@ The theme is defined on session-level, by adding the desired theme name to the s
 ```
 
 If no theme is provided in the session `data.json` the default theme will be used. 
-A theme has to be a subdirectory of the `themes` directory and contains a theme `data.json` which contains the basic theme settings.
+A theme has to be a subdirectory of the `themes` directory and contains a theme `data.json`, which contains the basic theme settings.
 
 ### Slideshows
 Apart from that a theme also contains JSON files for sildeshows such as the Prologue and Epilogue scenes. 
@@ -52,12 +52,12 @@ A slideshow JSON is defined as follows:
 `duration` is the duration of the whole slideshow in `hh:mm:ss`.
 
 Each element of the `slides` array represents a single slide.  
-The `slide` parameter corresponds to a HTML file in the `/slides` directory of the theme.  
+The `slide` parameter corresponds to an HTML file in the `/slides` directory of the theme.  
 `title` is a human-readable title for the slide.  
 `duration` the time the slide is displayed in `hh:mm:ss`.
 
-`music` contains information on the optional background music which can be played during a slideshow.  
-Each track consists of a file, some metadata used for display and information on the timing of the track.  
+`music` contains information on the optional background music, which can be played during a slideshow.  
+Each track consists of a file, some metadata used for display, and information on the timing of the track.  
 `file` music file located in `/music` directory 
 `start` refers to the start time of the track within the slideshow.  
 `end` refers to the start time of the track within the slideshow.  
@@ -70,7 +70,7 @@ Note that Prologue and Break count down, while Epilogue counts up.
 ## Default Theme
 
 The default theme that comes with Multistream is located in `/themes/default/`. 
-It contains simple slideshows for the Prologue, Break and Epilogue scenes in the respective `prologue.json`, `break.json`and `epilogue.json` files.
+It contains simple slideshows for the Prologue, Break, and Epilogue scenes in the respective `prologue.json`, `break.json` and `epilogue.json` files.
 
 The slides for the slideshows are located in the `/slides` directory. 
 
@@ -115,4 +115,4 @@ The `accent-color` fields denote background colors for containers, such as the b
 
 `main-logo` is a high resolution image of the oragnisation or event logo, which is present in nearly every scene.
 
-`logo-side` is a vertical version of the logo which is displayed in the `narrow-border` [Layout](doc/Layout.md). It should have an aspect ratio of about 1:10.
+`logo-side` is a vertical version of the logo, which is displayed in the `narrow-border` [Layout](doc/Layout.md). It should have an aspect ratio of about 1:10.

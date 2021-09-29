@@ -124,5 +124,5 @@ While streaming a session you can control Multistream via two inputs.
 The first is switching between scenes, which you can do directly from OBS (or via a Stream Deck).
 To provide the correct data for each program point, you use the OBS Dock.
 Here you select the "Current Program Point". 
-E.g. when you want to show the second talk, you choose the according program point and then transition to the "Video" scene.
+For example when you want to show the second talk, you choose the according program point and then transition to the "Video" scene.
  

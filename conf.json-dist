@@ -2,7 +2,7 @@
   "developmentMode": false,
   "websocketPath": "//localhost:8080/",
   "websocketPort": "8080",
-  "url": "http://localhost:8000/"
+  "url": "http://localhost:8000/",
   "obs": {
     "obsVersion": {
       "major": 27,

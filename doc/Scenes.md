@@ -5,22 +5,22 @@ The following default scenes are defined (located in `/scenes` dir):
 
 | HTML File | JS File | Scene Name | Parameters | Description |
 |------|------------|------------|-------------|-------------|
-| 01prologue.html | src/startPrologue.js | Prologue | start=*ISO 8601 time*: timestamp when session starts; start=now: start prologue now | Scene which precedes the session with countdown. Scene "Prologue Now" is configured in OBS to start the Prologue now. |
-| 02sponsoredBy.html | src/startSponsoredBy.js | Sponsored By | | Scene that displays the session sponsor and plays an applause. |
-| 03fastForward.html | src/startFastForward.js | Fast Forward | | Scene which cycles through all fast forward videos of the session |
+| 01prologue.html | src/startPrologue.js | Prologue | start=*ISO 8601 time*: timestamp when session starts; start=now: start prologue now | Scene, which precedes the session with countdown. Scene "Prologue Now" is configured in OBS to start the Prologue now. |
+| 02sponsoredBy.html | src/startSponsoredBy.js | Sponsored By | | Scene, which displays the session sponsor and plays an applause. |
+| 03fastForward.html | src/startFastForward.js | Fast Forward | | Scene, which cycles through all fast forward videos of the session |
 | 04introduction.html | src/startIntroduction.js | Introduction | index=*n* | Introduction for the presenter of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Introduction 1) |
 | 05video.html | src/startVideo.js | Video | index=*n* | Show the video of the *n*th program point. The index-parameter counts from 0, the scene name from 1 (?index=0 -> Video 1) |
-| 06ContinueDiscussion.html | src/startContinueDiscussion.js | Continue Discussion | | Scene which plays an applause and displays where the discussion can continue. |
-| 07break.html | src/startBreak.js | Break | | Scene which shows a 20min break slideshow |
-| 08epilogue.html | src/startEpilogue.js | Epilogue | | Scene which ends a session |
-| template.html | src/startTemplate.js | Template | scene=*name*: Override scene name | Scene with the default background but no content as such. Can be used, when background should be overlayed by OBS sources. |
+| 06ContinueDiscussion.html | src/startContinueDiscussion.js | Continue Discussion | | Scene, which plays an applause and displays where the discussion can continue. |
+| 07break.html | src/startBreak.js | Break | | Scene, which shows a 20min break slideshow |
+| 08epilogue.html | src/startEpilogue.js | Epilogue | | Scene, which ends a session |
+| template.html | src/startTemplate.js | Template | scene=*name*: Override scene name | Scene with the default background, but no content as such. Can be used, when background should be overlayed by OBS sources. |
 
 From these scenes the OBS scene collection is automatically compiled by the `/bin/compile-obs.js` script.  
 The naming scheme of scenes is the index (to get the desired scene order in OBS) followed by the name in camelCase.
 
 ### Prologue, Break, Epilogue
 Prologue, Break and Epilogue are slideshow scenes, which either start automatically when the scene becomes active, or in case of the Prologue 5 minutes before the specified `start` time in the sessions `data.json`.
-For these scenes to work, a JSON file which describes the sequence of slides must be provided in the theme (see [Slideshows](/doc/Theme.md#slideshows))
+For these scenes to work, a JSON file, which describes the sequence of slides, must be provided in the theme (see [Slideshows](/doc/Theme.md#slideshows))
 
 ### Sponsored By
 The Sponsored By scene displays the session sponsor. A session sponsor must be present in the `data.json` for this scene to work:
@@ -44,7 +44,7 @@ The layout template for the introduction can be overwritten in the `data.json` b
 
 ### Video
 In the Video scene a video or video playlist as specified in the `data.json` is played.
-A video program point can either be specified as a single video:
+A video program point can be specified as a single video:
 ```json
 {
   "session": {
@@ -128,9 +128,9 @@ You can also specify an icon for the location using the `locationIcon` parameter
 ``` 
 
 ## Adding new Scenes
-To add a new scene, two files need to be created: a HTML file in the `/scenes` directory following the naming scheme and a corresponding `startSceneName.js` file in the `/src` directory.  
+To add a new scene, two files need to be created: an HTML file in the `/scenes` directory following the naming scheme and a corresponding `startSceneName.js` file in the `/src` directory.  
 The new scene must also be registered in the `index.json` file by adding it to the `scenes` object there. 
-After creating a new scene the OBS scene collection hast to be re-compiled. To do so either run:
+After creating a new scene the OBS scene collection has to be re-compiled. To do so either run:
 
 ```shell
 npm run build
@@ -148,7 +148,7 @@ Additionally, the new scene has to be added to the `src/scenes.json` file to reg
 ## Testing Scenes
 In `test.html` a GUI for testing all scenes is provided, this can be reached by openeing http://localhost:8000/test.html
 
-## Status-Parameter
+## Status-Parameters
 Each scene will send status updates to the server (and save them to a cookie, in case the server is down). The following properties are used:
 
 * scene: name of the current scene (must equal the scene name in OBS)
