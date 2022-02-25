@@ -14,6 +14,7 @@ Install Node.JS
 git clone https://github.com/cg-tuwien/multistream
 cd multistream
 cp conf.json-dist conf.json # contains the global configuration
+mkdir dist
 npm install
 npm start # this will start the NodeJS server, listing for Websocket connections
 ```
@@ -33,7 +34,7 @@ npm run http-server
 ```
 
 ### Development
-Automatically re-compile dist/app.js when sources change:
+Automatically re-compile dist/app.js when sources change (also includes debug symbols for easier debugging):
 ```shell
 npm run watch # to build OBS scenes and monitor
 ```
@@ -65,6 +66,7 @@ Install Node.JS
 git clone https://gitlab.cg.tuwien.ac.at/eg2021/multistream
 cd multistream
 cp conf.json-dist conf.json # contains the global configuration
+mkdir dist
 npm install
 npm start # this will start the NodeJS server, listing for Websocket connections
 ```
